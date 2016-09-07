@@ -1,0 +1,4 @@
+Mitäs tänne sitten kirjoitetaan,
+ohjeita seurattu tähän asti ja mennyt hyvin lähes ongelmitta.
+Git Shell ei tunnistanut joitan komentoja mutta sain muutettu Git Bashiksi ja nyt kaikki hyvin.
+Muokkas toiselta koneelta myös tähän tässä.
