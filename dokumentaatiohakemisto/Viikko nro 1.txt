@@ -5,3 +5,4 @@ Git Shell ei tunnistanut joitan komentoja mutta sain muutettu Git Bashiksi ja ny
 
 7.9
 Projekti lisätty, nyt yhteensä pari tuntia käytetty asioiden set-uppaamiseen
+
