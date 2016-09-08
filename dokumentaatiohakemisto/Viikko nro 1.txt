@@ -1,8 +1,0 @@
-6.9
-Mitäs tänne sitten kirjoitetaan,
-ohjeita seurattu tähän asti ja mennyt hyvin lähes ongelmitta.
-Git Shell ei tunnistanut joitan komentoja mutta sain muutettu Git Bashiksi ja nyt kaikki hyvin.
-
-7.9
-Projekti lisätty, nyt yhteensä pari tuntia käytetty asioiden set-uppaamiseen
-
