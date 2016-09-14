@@ -1,9 +1,8 @@
 ### Tuntikirjanpito
-Päivä | Tunnit | Kuvaus
+PÃ¤ivÃ¤ | Tunnit | Kuvaus
 --------------- | ----- | ------
-06.09.2016 | 1h | Git repositorion luomistyötä
-07.09.2016 | 1h | Luomistyön jatkuminen
-08.09.2016 | 1h | Ensimmäisen viikon tavoitteiden viimeistely
-
-14.09.2016 | 1h | Ensimmäisen viikon puutteiden paikkaus :(
-14.09.2016 | 3h | Tekstikentän generointi + sijoituslogiikkaa merkeille
+06.09.2016 | 1h | Git repositorion luomistyÃ¶tÃ¤
+07.09.2016 | 1h | LuomistyÃ¶n jatkuminen
+08.09.2016 | 1h | EnsimmÃ¤isen viikon tavoitteiden viimeistely
+14.09.2016 | 1h | EnsimmÃ¤isen viikon puutteiden paikkaus :(
+14.09.2016 | 3h | TekstikentÃ¤n generointi + sijoituslogiikkaa merkeille
