@@ -1,5 +1,19 @@
 ### Aihe:
-Peli 4InTheRow, tavoite saada 4 merkkiä putkeen tiputtamalla sarakkeisiin
+Toteutetaan peli 4InTheRow,
+tavoite saada 4 merkkiä putkeen tiputtamalla eri sarakkeisiin
+
+### Käyttäjät:
+2 pelaajaa, joko Player1 vs Player2 tai Player1 vs COM
 
 ### Toiminnot:
-Mahdollisuus pelata kaverin kanssa, tietokonetta vastaan (ehkä eri vaikeustasot)
+##### Aloitusliittymä:
+- Pelimuodon valinta, PvP vai PvCOM
+- COM pelaajan taitotason valinta
+- EHKÄ Pelialustan koon valinta
+
+##### Itse peli:
+- Sarakkeen valitseminen mihin pudottaa merkin
+- Uusi peli painike
+
+
+

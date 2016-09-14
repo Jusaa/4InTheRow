@@ -5,3 +5,4 @@ Päivä | Tunnit | Kuvaus
 07.09.2016 | 1h | Luomistyön jatkuminen
 08.09.2016 | 1h | Ensimmäisen viikon tavoitteiden viimeistely
 
+14.09.2016 | 1h | Ensimmäisen viikon puutteiden paikkaus :(

@@ -12,7 +12,6 @@ package com.intherow.intherow;
 public class Main {
     
     public static void main(String[] args) {
-    System.out.println("Tässähän on jo hieno ohjelma.");
-
+        System.out.println("moi");
     }
 }
