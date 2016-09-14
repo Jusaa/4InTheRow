@@ -6,3 +6,4 @@ Päivä | Tunnit | Kuvaus
 08.09.2016 | 1h | Ensimmäisen viikon tavoitteiden viimeistely
 
 14.09.2016 | 1h | Ensimmäisen viikon puutteiden paikkaus :(
+14.09.2016 | 3h | Tekstikentän generointi + sijoituslogiikkaa merkeille
