@@ -12,9 +12,9 @@ import java.util.Scanner;
  * @author Jusaa
  */
 public class Main {
-    
+
     public static void main(String[] args) {
-       Piirtaja piirtaja = new Piirtaja();
-       PelaajanVuoro vuoro = new PelaajanVuoro();
+        Peli peli = new Peli();
+        peli.Aloita();
     }
 }

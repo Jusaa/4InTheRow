@@ -7,3 +7,4 @@ Päivä | Tunnit | Kuvaus
 
 14.09.2016 | 1h | Ensimmäisen viikon puutteiden paikkaus :(
 14.09.2016 | 3h | Tekstikentän generointi + sijoituslogiikkaa merkeille
+15.09.2016 | 3h | Pelin Player vs Player version logiikan viimeistely (Nyt toimii)
