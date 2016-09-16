@@ -32,6 +32,9 @@ public class Peli {
     }
 
     public void aloita() {
+        
+        // KONSTRUKTORISSA TOISTUVAT MÄÄRITTELYT VAIN TESTEJÄ VARTEN
+        
 //        System.out.print("Pelaaja 1, mitä merkkiä haluat käyttää pelissä? ");
 //        String playeronemerkki = lukija.nextLine();
 //        playeronemerkki = "" + playeronemerkki.charAt(0);
