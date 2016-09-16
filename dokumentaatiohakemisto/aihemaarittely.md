@@ -15,7 +15,10 @@ tavoite saada 4 merkkiä putkeen tiputtamalla eri sarakkeisiin
 - Sarakkeen valitseminen mihin pudottaa merkin
 - Uusi peli painike
 
+Ihan kuvamuodossa:
 [Luokkakaavio](https://gyazo.com/a69f38a355a61ed715391108dd9cc99c)
+
+XML versioon:
 [Luokkakaavio](Luokkakaavio.xml)
 
 
