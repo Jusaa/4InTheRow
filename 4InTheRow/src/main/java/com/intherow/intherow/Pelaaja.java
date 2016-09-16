@@ -26,13 +26,13 @@ public class Pelaaja {
         this.lukija = lukija;
     }
 
-    public void LaitaMerkki() {
+    public void laitaMerkki() {
         System.out.print(nimi + "\nMihin laitetaan merkki? ");
         int pylvas;
         while (true) {
             try {
                 pylvas = Integer.parseInt(lukija.nextLine());
-            } catch (Exception e‏) {
+            } catch (Exception exception) {
                 pylvas = 0;
             }
 
@@ -44,7 +44,23 @@ public class Pelaaja {
         }
     }
 
-    public void AsetaVastustajanMerkki(String merkki) {
+    public void asetaVastustajanMerkki(String merkki) {
         vastustajanMerkki = merkki;
+    }
+
+    public String getNimi() {
+        return nimi;
+    }
+
+    public String getOmaMerkki() {
+        return pelaajanMerkki;
+    }
+
+    public String getVastustajanMerkki() {
+        return vastustajanMerkki;
+    }
+
+    public String toString() {
+        return nimi + ", oma merkki " + pelaajanMerkki;
     }
 }

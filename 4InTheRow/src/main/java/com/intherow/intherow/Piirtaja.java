@@ -21,18 +21,10 @@ public class Piirtaja {
 
     public void uusiPeli() {
         System.out.println(" -1- -2- -3- -4- -5- -6- -7- ");
-        System.out.println("|   |   |   |   |   |   |   |");
-        System.out.println(" --- --- --- --- --- --- --- ");
-        System.out.println("|   |   |   |   |   |   |   |");
-        System.out.println(" --- --- --- --- --- --- --- ");
-        System.out.println("|   |   |   |   |   |   |   |");
-        System.out.println(" --- --- --- --- --- --- --- ");
-        System.out.println("|   |   |   |   |   |   |   |");
-        System.out.println(" --- --- --- --- --- --- --- ");
-        System.out.println("|   |   |   |   |   |   |   |");
-        System.out.println(" --- --- --- --- --- --- --- ");
-        System.out.println("|   |   |   |   |   |   |   |");
-        System.out.println(" --- --- --- --- --- --- --- ");
+        for (int i = 0; i < 6; i++) {
+            System.out.println("|   |   |   |   |   |   |   |");
+            System.out.println(" --- --- --- --- --- --- --- ");
+        }
 
         lista = new ArrayList<>();
         ArrayList<Integer> sisaLista = new ArrayList<>();
@@ -80,5 +72,9 @@ public class Piirtaja {
 
     public ArrayList<ArrayList<Integer>> getLista() {
         return lista;
+    }
+
+    public String toString() {
+        return lista.toString();
     }
 }
