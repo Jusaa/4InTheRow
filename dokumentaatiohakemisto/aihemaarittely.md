@@ -16,7 +16,7 @@ tavoite saada 4 merkkiä putkeen tiputtamalla eri sarakkeisiin
 - Uusi peli painike
 
 [Luokkakaavio](https://gyazo.com/a69f38a355a61ed715391108dd9cc99c)
-[Luokkakaavio](dokumentaatiohakemisto/Luokkakaavio)
+[Luokkakaavio](dokumentaatiohakemisto/Luokkakaavio.xml)
 
 
 
