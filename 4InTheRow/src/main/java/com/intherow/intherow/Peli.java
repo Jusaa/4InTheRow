@@ -47,7 +47,11 @@ public class Peli {
 //        playertwo = new Pelaaja("playertwo", playertwomerkki, piirtaja, lukija);
 //        playerone.asetaVastustajanMerkki(playertwomerkki);
 //        playertwo.asetaVastustajanMerkki(playeronemerkki);
+//        run();        
+    }
 
+    public void run(){
+        
         while (true) {
             playerone.laitaMerkki();
             voitonTarkistaja(1);
@@ -61,7 +65,7 @@ public class Peli {
             }
         }
     }
-
+    
     public void voitonTarkistaja(int nro) {
         String voitto = "";
 
