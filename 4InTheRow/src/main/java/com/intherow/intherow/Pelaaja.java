@@ -14,16 +14,18 @@ import java.util.Scanner;
 public class Pelaaja {
 
     private String nimi;
+    private int id;
     private String pelaajanMerkki;
     private String vastustajanMerkki;
     private Piirtaja piirtaja;
     private Scanner lukija;
 
-    public Pelaaja(String nimi, String pelaajanMerkki, Piirtaja piirtaja, Scanner lukija) {
+    public Pelaaja(String nimi, String pelaajanMerkki, Piirtaja piirtaja, Scanner lukija, int id) {
         this.nimi = nimi;
         this.piirtaja = piirtaja;
         this.pelaajanMerkki = pelaajanMerkki;
         this.lukija = lukija;
+        this.id = id;
     }
 
     public void laitaMerkki() {
@@ -37,10 +39,14 @@ public class Pelaaja {
             }
 
             if (pylvas >= 1 && pylvas <= 7) {
-                piirtaja.vuoronPiirto(pylvas, pelaajanMerkki, vastustajanMerkki, nimi);
-                break;
+                if (piirtaja.vuoronPiirto(pylvas, pelaajanMerkki, vastustajanMerkki, id) == true) {
+                    break;
+                }else {
+                    System.out.print("Valitsemasi pylväs on täynnä, valitse toinen: ");
+                }
+            } else {
+                System.out.print("Kirjoita numero 1-7, haluamasi kohdan mukaan: ");
             }
-            System.out.print("Kirjoita numero 1-7, haluamasi kohdan mukaan: ");
         }
     }
 

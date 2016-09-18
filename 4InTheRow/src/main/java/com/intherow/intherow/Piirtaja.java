@@ -16,7 +16,6 @@ public class Piirtaja {
     private ArrayList<ArrayList<Integer>> lista;
 
     public Piirtaja() {
-        uusiPeli();
     }
 
     public void uusiPeli() {
@@ -27,7 +26,7 @@ public class Piirtaja {
         }
 
         lista = new ArrayList<>();
-        ArrayList<Integer> sisaLista = new ArrayList<>();
+        ArrayList<Integer> sisaLista;
         for (int i = 7; i > 0; i--) {
             sisaLista = new ArrayList<>();
             for (int ii = 6; ii > 0; ii--) {
@@ -37,36 +36,42 @@ public class Piirtaja {
         }
     }
 
-    public void vuoronPiirto(int pylvas, String merkki, String merkki2, String nimi) {
-        for (int i = 6; i >= 0; i--) {
-            if (i == 0 || lista.get(pylvas - 1).get(i - 1) != 0) {
-                if (nimi.equals("playerone")) {
-                    lista.get(pylvas - 1).set(i, 1);
-                } else if (nimi.equals("playertwo")) {
-                    lista.get(pylvas - 1).set(i, 2);
-                }
-                break;
-            }
-        }
-        System.out.println("\n\n -1- -2- -3- -4- -5- -6- -7- ");
+    public boolean vuoronPiirto(int pylvas, String merkki, String merkki2, int id) {
 
-        int nro = 6;
-        for (int i = nro; i > 0; i--) {
-            for (int ii = 0; ii < 7; ii++) {
-                if (lista.get(ii).get(nro - 1) == 0) {
-                    System.out.print("|   ");
-                } else if (lista.get(ii).get(nro - 1) == 1 && nimi.equals("playerone")) {
-                    System.out.print("| " + merkki + " ");
-                } else if (lista.get(ii).get(nro - 1) == 2 && nimi.equals("playerone")) {
-                    System.out.print("| " + merkki2 + " ");
-                } else if (lista.get(ii).get(nro - 1) == 2 && nimi.equals("playertwo")) {
-                    System.out.print("| " + merkki + " ");
-                } else if (lista.get(ii).get(nro - 1) == 1 && nimi.equals("playertwo")) {
-                    System.out.print("| " + merkki2 + " ");
+        if (lista.get(pylvas - 1).get(5) != 0) {
+            return false;
+        } else {
+            for (int i = 6; i >= 0; i--) {
+                if (i == 0 || lista.get(pylvas - 1).get(i - 1) != 0) {
+                    if (id == 1) {
+                        lista.get(pylvas - 1).set(i, 1);
+                    } else if (id == 2) {
+                        lista.get(pylvas - 1).set(i, 2);
+                    }
+                    break;
                 }
             }
-            nro--;
-            System.out.println("|\n --- --- --- --- --- --- --- ");
+            System.out.println("\n\n -1- -2- -3- -4- -5- -6- -7- ");
+
+            int nro = 6;
+            for (int i = nro; i > 0; i--) {
+                for (int ii = 0; ii < 7; ii++) {
+                    if (lista.get(ii).get(nro - 1) == 0) {
+                        System.out.print("|   ");
+                    } else if (lista.get(ii).get(nro - 1) == 1 && id == 1) {
+                        System.out.print("| " + merkki + " ");
+                    } else if (lista.get(ii).get(nro - 1) == 2 && id == 1) {
+                        System.out.print("| " + merkki2 + " ");
+                    } else if (lista.get(ii).get(nro - 1) == 2 && id == 2) {
+                        System.out.print("| " + merkki + " ");
+                    } else if (lista.get(ii).get(nro - 1) == 1 && id == 2) {
+                        System.out.print("| " + merkki2 + " ");
+                    }
+                }
+                nro--;
+                System.out.println("|\n --- --- --- --- --- --- --- ");
+            }
+            return true;
         }
     }
 

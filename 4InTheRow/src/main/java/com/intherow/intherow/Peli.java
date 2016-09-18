@@ -24,34 +24,38 @@ public class Peli {
         lukija = new Scanner(System.in);
         tarkistusnro = 0;
         piirtaja = new Piirtaja();
-        playerone = new Pelaaja("playerone", "X", piirtaja, lukija);
-        playertwo = new Pelaaja("playertwo", "O", piirtaja, lukija);
+        playerone = new Pelaaja("playerone", "X", piirtaja, lukija, 1);
+        playertwo = new Pelaaja("playertwo", "O", piirtaja, lukija, 2);
         playerone.asetaVastustajanMerkki("O");
         playertwo.asetaVastustajanMerkki("X");
 
     }
 
     public void aloita() {
-        
-        // KONSTRUKTORISSA TOISTUVAT MÄÄRITTELYT VAIN TESTEJÄ VARTEN
-        
-//        System.out.print("Pelaaja 1, mitä merkkiä haluat käyttää pelissä? ");
-//        String playeronemerkki = lukija.nextLine();
-//        playeronemerkki = "" + playeronemerkki.charAt(0);
-//        System.out.print("Pelaaja 2, mitä merkkiä haluat käyttää pelissä? ");
-//        String playertwomerkki = lukija.nextLine();
-//        playertwomerkki = "" + playertwomerkki.charAt(0);
-//
-//        piirtaja = new Piirtaja();
-//        playerone = new Pelaaja("playerone", playeronemerkki, piirtaja, lukija);
-//        playertwo = new Pelaaja("playertwo", playertwomerkki, piirtaja, lukija);
-//        playerone.asetaVastustajanMerkki(playertwomerkki);
-//        playertwo.asetaVastustajanMerkki(playeronemerkki);
-//        run();        
-    }
 
-    public void run(){
-        
+        // KONSTRUKTORISSA TOISTUVAT MÄÄRITTELYT VAIN TESTEJÄ VARTEN
+        System.out.print("Pelaaja 1, kerro nimesi: ");
+        String playeronenimi = lukija.nextLine();
+        System.out.print("Entä mitä merkkiä haluat käyttää pelissä? ");
+        String playeronemerkki = lukija.nextLine();
+        playeronemerkki = "" + playeronemerkki.charAt(0);
+        System.out.print("Pelaaja 2, kerro nimesi: ");
+        String playertwonimi = lukija.nextLine();
+        System.out.print("Entä mitä merkkiä haluat käyttää pelissä? ");
+        String playertwomerkki = lukija.nextLine();
+        playertwomerkki = "" + playertwomerkki.charAt(0);
+
+        playerone = new Pelaaja(playeronenimi, playeronemerkki, piirtaja, lukija, 1);
+        playertwo = new Pelaaja(playertwonimi, playertwomerkki, piirtaja, lukija, 2);
+        playerone.asetaVastustajanMerkki(playertwomerkki);
+        playertwo.asetaVastustajanMerkki(playeronemerkki);
+        run();
+    }
+    
+    public void run() {
+       
+        tarkistusnro = 0;
+        piirtaja.uusiPeli();
         while (true) {
             playerone.laitaMerkki();
             voitonTarkistaja(1);
@@ -64,8 +68,23 @@ public class Peli {
                 break;
             }
         }
+
+        while (true) {
+            System.out.println("\n[1] Uusi peli\n[2] Uusi peli samoilla tiedoilla\n[3] Lopeta");
+            String komento = lukija.nextLine();
+            if (komento.equals("1")) {
+                aloita();
+            } else if (komento.equals("2")) {
+                run();
+            } else if (komento.equals("3")) {
+            } else {
+                continue;
+            }
+            break;
+        }
+
     }
-    
+
     public void voitonTarkistaja(int nro) {
         String voitto = "";
 
