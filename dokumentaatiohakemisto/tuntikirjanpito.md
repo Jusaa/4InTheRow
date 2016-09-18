@@ -8,3 +8,4 @@ Päivä | Tunnit | Kuvaus
 14.09.2016 | 3h | Tekstikentän generointi + sijoituslogiikkaa merkeille
 15.09.2016 | 3h | Pelin Player vs Player version logiikan viimeistely (Nyt toimii)
 16.09.2016 | 4h | JUnit testien kanssa pähkäilemistä, luokkakaavio ja muuta pientä
+18.09.2016 | 1h | Lisäominaisuuksia, nimen valinta, menu
