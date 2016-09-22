@@ -37,18 +37,20 @@ public class Peli {
 
     }
 
-    public void aloita(){
+    public void aloita() {
+        voitonTarkistaja = new VoitonTarkistaja();
         int valinta = piirtaja.menuPiirto(lukija);
-        if(valinta == 1){
+        if (valinta == 1) {
             aloitaYksinPeli();
-        }else if(valinta == 2){
+        } else if (valinta == 2) {
             aloitaKaksinPeli();
-        }else if(valinta == 3){
+        } else if (valinta == 3) {
             tarkistusnro = 3;
-        }else if(valinta == 4){
+        } else if (valinta == 4) {
             tarkistusnro = 4;
         }
     }
+
     public void aloitaKaksinPeli() {
 
         // KONSTRUKTORISSA TOISTUVAT MÄÄRITTELYT VAIN TESTEJÄ VARTEN
@@ -69,19 +71,19 @@ public class Peli {
         playertwo.asetaVastustajanMerkki(playeronemerkki);
         runTwoPlayer();
     }
-    
-    public void aloitaYksinPeli(){
+
+    public void aloitaYksinPeli() {
         System.out.print("Kerro nimesi: ");
         String playeronenimi = lukija.nextLine();
         System.out.print("Entä mitä merkkiä haluat käyttää pelissä? ");
         String playeronemerkki = lukija.nextLine();
         playeronemerkki = "" + playeronemerkki.charAt(0);
-        if(playeronemerkki.equals("O")){
+        if (playeronemerkki.equals("O")) {
             System.out.print("O on tietokoneen merkki, valitse toinen ellet halua samaa merkkiä ;)  ");
             playeronemerkki = lukija.nextLine();
             playeronemerkki = "" + playeronemerkki.charAt(0);
         }
-        
+
         playerone = new UserPelaaja(playeronenimi, playeronemerkki, piirtaja, lukija, 1);
         cpuplayer.asetaVastustajanMerkki(playeronemerkki);
         playerone.asetaVastustajanMerkki("O");
@@ -106,11 +108,11 @@ public class Peli {
         }
         tarkistusnro = 0;
         aloita();
-        if(tarkistusnro == 3){
+        if (tarkistusnro == 3) {
             runTwoPlayer();
         }
     }
-    
+
     public void runOnePlayer() {
 
         tarkistusnro = 0;
@@ -129,7 +131,7 @@ public class Peli {
         }
         tarkistusnro = 0;
         aloita();
-        if(tarkistusnro == 3){
+        if (tarkistusnro == 3) {
             runOnePlayer();
         }
     }
@@ -153,8 +155,8 @@ public class Peli {
     public Piirtaja getPiirtaja() {
         return piirtaja;
     }
-    
-    public VoitonTarkistaja getVoitonTarkistaja(){
+
+    public VoitonTarkistaja getVoitonTarkistaja() {
         return voitonTarkistaja;
     }
 }

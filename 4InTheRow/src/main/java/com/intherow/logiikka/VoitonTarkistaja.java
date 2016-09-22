@@ -14,7 +14,7 @@ import com.intherow.ui.Piirtaja;
 public class VoitonTarkistaja {
 
     private int tarkistusnro;
-    
+
     public VoitonTarkistaja() {
         tarkistusnro = 0;
     }

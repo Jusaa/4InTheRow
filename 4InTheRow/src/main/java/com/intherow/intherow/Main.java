@@ -6,6 +6,7 @@
 package com.intherow.intherow;
 
 import com.intherow.logiikka.Peli;
+import com.intherow.ui.Piirtaja;
 import java.util.Scanner;
 
 /**
@@ -17,5 +18,7 @@ public class Main {
     public static void main(String[] args) {
         Peli peli = new Peli();
         peli.aloita();
+
+        
     }
 }

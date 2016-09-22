@@ -36,10 +36,10 @@
                 <version>1.1.8</version>
                 <configuration>
                     <targetClasses>
-                        <param>com.intherow.intherow.*</param>
+                        <param>com.intherow.*</param>
                     </targetClasses>
                     <targetTests>
-                        <param>com.intherow.intherow.*</param>
+                        <param>com.intherow.*</param>
                     </targetTests>
                 </configuration>
             </plugin>

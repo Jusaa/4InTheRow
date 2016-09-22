@@ -12,9 +12,10 @@ import java.util.Scanner;
  *
  * @author Jusaa
  */
-public class UserPelaaja extends Pelaaja{
-    
+public class UserPelaaja extends Pelaaja {
+
     private Scanner lukija;
+
     public UserPelaaja(String nimi, String pelaajanMerkki, Piirtaja piirtaja, Scanner lukija, int id) {
         super(nimi, pelaajanMerkki, piirtaja, id);
         this.lukija = lukija;

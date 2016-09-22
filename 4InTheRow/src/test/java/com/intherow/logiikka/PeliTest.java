@@ -60,28 +60,29 @@ public class PeliTest {
     @Test
     public void vaakaTarkistusToimii() {
         Peli peli = new Peli();
+        peli.getPiirtaja().getDatabase().uusiLista();
         peli.getPiirtaja().vuoronPiirto(1, "X", "O", 1);
         peli.getPiirtaja().vuoronPiirto(2, "X", "O", 1);
         peli.getPiirtaja().vuoronPiirto(3, "X", "O", 1);
         peli.getPiirtaja().vuoronPiirto(4, "X", "O", 1);
-        peli.getVoitonTarkistaja().tarkasta(1, new Piirtaja());
-        assertEquals(peli.getTarkistusnro(), 1);
+        assertEquals(peli.getVoitonTarkistaja().tarkasta(1, peli.getPiirtaja()), 1);
     }
 
     @Test
     public void pystyTarkistusToimii() {
         Peli peli = new Peli();
+        peli.getPiirtaja().getDatabase().uusiLista();
         peli.getPiirtaja().vuoronPiirto(3, "X", "O", 1);
         peli.getPiirtaja().vuoronPiirto(3, "X", "O", 1);
         peli.getPiirtaja().vuoronPiirto(3, "X", "O", 1);
         peli.getPiirtaja().vuoronPiirto(3, "X", "O", 1);
-        peli.getVoitonTarkistaja().tarkasta(1, new Piirtaja());
-        assertEquals(peli.getTarkistusnro(), 1);
+        assertEquals(peli.getVoitonTarkistaja().tarkasta(1, peli.getPiirtaja()), 1);
     }
 
     @Test
     public void vinoTarkistusToimii() {
         Peli peli = new Peli();
+        peli.getPiirtaja().getDatabase().uusiLista();
         peli.getPiirtaja().vuoronPiirto(3, "X", "O", 1);
         peli.getPiirtaja().vuoronPiirto(4, "O", "X", 2);
         peli.getPiirtaja().vuoronPiirto(4, "X", "O", 1);
@@ -93,13 +94,13 @@ public class PeliTest {
         peli.getPiirtaja().vuoronPiirto(5, "X", "O", 1);
         peli.getPiirtaja().vuoronPiirto(6, "O", "X", 2);
         peli.getPiirtaja().vuoronPiirto(6, "X", "O", 1);
-        peli.getVoitonTarkistaja().tarkasta(1, new Piirtaja());
-        assertEquals(peli.getTarkistusnro(), 1);
+        assertEquals(peli.getVoitonTarkistaja().tarkasta(1, peli.getPiirtaja()), 1);
     }
 
     @Test
     public void vinoTarkistusToimii2() {
         Peli peli = new Peli();
+        peli.getPiirtaja().getDatabase().uusiLista();
         peli.getPiirtaja().vuoronPiirto(3, "X", "O", 1);
         peli.getPiirtaja().vuoronPiirto(4, "O", "X", 2);
         peli.getPiirtaja().vuoronPiirto(2, "X", "O", 1);
@@ -110,8 +111,7 @@ public class PeliTest {
         peli.getPiirtaja().vuoronPiirto(1, "O", "X", 2);
         peli.getPiirtaja().vuoronPiirto(1, "X", "O", 1);
         peli.getPiirtaja().vuoronPiirto(1, "O", "X", 2);
-        peli.getVoitonTarkistaja().tarkasta(2, new Piirtaja());
-        assertEquals(peli.getTarkistusnro(), 2);
+        assertEquals(peli.getVoitonTarkistaja().tarkasta(2, peli.getPiirtaja()), 2);
     }
 
 }

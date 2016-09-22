@@ -15,11 +15,11 @@ import java.util.Scanner;
  */
 public class Piirtaja {
 
-    private ArrayList<ArrayList<Integer>> lista;
     private Database database;
 
     public Piirtaja() {
         database = new Database();
+        database.uusiLista();
     }
 
     public void uusiPeli() {
@@ -28,7 +28,7 @@ public class Piirtaja {
             System.out.println("|   |   |   |   |   |   |   |");
             System.out.println(" --- --- --- --- --- --- --- ");
         }
-        lista = database.uusiLista();
+        database.uusiLista();
     }
 
     public boolean vuoronPiirto(int pylvas, String merkki, String merkki2, int id) {
@@ -37,19 +37,18 @@ public class Piirtaja {
             return false;
         } else {
             System.out.println("\n\n -1- -2- -3- -4- -5- -6- -7- ");
-
             int nro = 6;
             for (int i = nro; i > 0; i--) {
                 for (int ii = 0; ii < 7; ii++) {
-                    if (lista.get(ii).get(nro - 1) == 0) {
+                    if (database.getLista().get(ii).get(nro - 1) == 0) {
                         System.out.print("|   ");
-                    } else if (lista.get(ii).get(nro - 1) == 1 && id == 1) {
+                    } else if (database.getLista().get(ii).get(nro - 1) == 1 && id == 1) {
                         System.out.print("| " + merkki + " ");
-                    } else if (lista.get(ii).get(nro - 1) == 2 && id == 1) {
+                    } else if (database.getLista().get(ii).get(nro - 1) == 2 && id == 1) {
                         System.out.print("| " + merkki2 + " ");
-                    } else if (lista.get(ii).get(nro - 1) == 2 && id == 2) {
+                    } else if (database.getLista().get(ii).get(nro - 1) == 2 && id == 2) {
                         System.out.print("| " + merkki + " ");
-                    } else if (lista.get(ii).get(nro - 1) == 1 && id == 2) {
+                    } else if (database.getLista().get(ii).get(nro - 1) == 1 && id == 2) {
                         System.out.print("| " + merkki2 + " ");
                     }
                 }
@@ -59,8 +58,8 @@ public class Piirtaja {
             return true;
         }
     }
-    
-    public int menuPiirto(Scanner lukija){
+
+    public int menuPiirto(Scanner lukija) {
         while (true) {
             System.out.println("\n[1] Uusi yksinpeli\n[2] Uusi kaksinpeli\n[3] Uusi peli samoilla tiedoilla\n[4] Lopeta");
             String komento = lukija.nextLine();
@@ -70,7 +69,7 @@ public class Piirtaja {
                 return 2;
             } else if (komento.equals("3")) {
                 return 3;
-            } else if(komento.equals("4")){
+            } else if (komento.equals("4")) {
                 return 4;
             }
         }
@@ -81,6 +80,6 @@ public class Piirtaja {
     }
 
     public String toString() {
-        return lista.toString();
+        return database.getLista().toString();
     }
 }

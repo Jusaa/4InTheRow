@@ -19,7 +19,7 @@ public class Database {
 
     }
 
-    public ArrayList<ArrayList<Integer>> uusiLista() {
+    public void uusiLista() {
         lista = new ArrayList<>();
         ArrayList<Integer> sisaLista;
         for (int i = 7; i > 0; i--) {
@@ -29,7 +29,6 @@ public class Database {
             }
             lista.add(sisaLista);
         }
-        return lista;
     }
 
     public boolean lisaaListaan(int pylvas, String merkki, String merkki2, int id) {
@@ -52,5 +51,9 @@ public class Database {
 
     public ArrayList<ArrayList<Integer>> getLista() {
         return lista;
+    }
+    
+    public String toString(){
+        return lista.toString();
     }
 }
