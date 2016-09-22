@@ -9,3 +9,4 @@ Päivä | Tunnit | Kuvaus
 15.09.2016 | 3h | Pelin Player vs Player version logiikan viimeistely (Nyt toimii)
 16.09.2016 | 4h | JUnit testien kanssa pähkäilemistä, luokkakaavio ja muuta pientä
 18.09.2016 | 1h | Lisäominaisuuksia, nimen valinta, menu
+22.09.2016 | 2h | Cpu pelaajan mahdollisuus, packageiden jakoa ja siistimistä
