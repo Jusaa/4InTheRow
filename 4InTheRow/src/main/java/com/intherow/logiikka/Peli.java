@@ -127,109 +127,12 @@ public class Peli {
                 break;
             }
         }
+        tarkistusnro = 0;
         aloita();
         if(tarkistusnro == 3){
             runOnePlayer();
         }
     }
-
-//    public void voitonTarkistaja(int nro) {
-//        String voitto = "";
-//
-//        //Pystyrivien tarkistus
-//        pystyTarkistus(nro, voitto);
-//
-//        //Vaakarivien tarkistus
-//        vaakaTarkistus(nro, voitto);
-//
-//        //Vinorivien tarkistus OIKEALLE YLÖS
-//        vinoTarkistusOY(nro, voitto, 4, 2);
-//        vinoTarkistusOY(nro, voitto, 5, 1);
-//        vinoTarkistusOY(nro, voitto, 6, 0);
-//        vinoTarkistusOY(nro, voitto, 6, -1);
-//        vinoTarkistusOY(nro, voitto, 5, -2);
-//        vinoTarkistusOY(nro, voitto, 4, -3);
-//
-//        //Vinorivien tarkistus OIKEALLE ALAS       
-//        vinoTarkistusOA(nro, voitto, 4, 3, 0);
-//        vinoTarkistusOA(nro, voitto, 5, 4, 0);
-//        vinoTarkistusOA(nro, voitto, 6, 5, 0);
-//        vinoTarkistusOA(nro, voitto, 6, 5, 1);
-//        vinoTarkistusOA(nro, voitto, 5, 5, 2);
-//        vinoTarkistusOA(nro, voitto, 4, 5, 3);
-//
-//    }
-//
-//    public void dingDingDing(int nro, String voitto) {
-//        if (voitto.equals("1111")) {
-//            System.out.println("DINGDINGDING\nPELAAAJA " + nro + " VOITTI!");
-//            tarkistusnro = nro;
-//        }
-//    }
-//
-//    public void vinoTarkistusOY(int nro, String voitto, int maara, int getOffset) {
-//        voitto = "";
-//        for (int i = 0; i < maara; i++) {
-//            if (getOffset < 0) {
-//                if (piirtaja.getDatabase().getLista().get(i - getOffset).get(i) == nro) {
-//                    voitto = voitto + "1";
-//                } else {
-//                    voitto = "";
-//                }
-//            } else {
-//                if (piirtaja.getDatabase().getLista().get(i).get(i + getOffset) == nro) {
-//                    voitto = voitto + "1";
-//                } else {
-//                    voitto = "";
-//                }
-//            }
-//
-//            dingDingDing(nro, voitto);
-//        }
-//    }
-//
-//    public void vinoTarkistusOA(int nro, String voitto, int maara, int laskeva, int nouseva) {
-//        voitto = "";
-//        int ii = laskeva;
-//        for (int i = nouseva; i < maara; i++) {
-//            if (piirtaja.getDatabase().getLista().get(i).get(ii) == nro) {
-//                voitto = voitto + "1";
-//            } else {
-//                voitto = "";
-//            }
-//            ii--;
-//            dingDingDing(nro, voitto);
-//        }
-//    }
-//
-//    public void vaakaTarkistus(int nro, String voitto) {
-//        for (int i = 0; i < 6; i++) {
-//            voitto = "";
-//            for (int ii = 0; ii < 7; ii++) {
-//                if (piirtaja.getDatabase().getLista().get(ii).get(i) == nro) {
-//                    voitto = voitto + "1";
-//                } else {
-//                    voitto = "";
-//                }
-//                dingDingDing(nro, voitto);
-//            }
-//        }
-//    }
-//
-//    public void pystyTarkistus(int nro, String voitto) {
-//        voitto = "";
-//        for (int i = 6; i >= 0; i--) {
-//            voitto = "";
-//            for (int ii = 0; ii < 6; ii++) {
-//                if (piirtaja.getDatabase().getLista().get(i).get(ii) == nro) {
-//                    voitto = voitto + "1";
-//                } else {
-//                    voitto = "";
-//                }
-//                dingDingDing(nro, voitto);
-//            }
-//        }
-//    }
 
     public ArrayList<ArrayList<Integer>> getLista() {
         return piirtaja.getDatabase().getLista();
