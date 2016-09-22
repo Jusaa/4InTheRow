@@ -3,29 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.intherow.intherow;
+package com.intherow.logiikka;
 
+import com.intherow.ui.Piirtaja;
 import java.util.Scanner;
 
 /**
  *
  * @author Jusaa
  */
-public class Pelaaja {
-
-    private String nimi;
-    private int id;
-    private String pelaajanMerkki;
-    private String vastustajanMerkki;
-    private Piirtaja piirtaja;
+public class UserPelaaja extends Pelaaja{
+    
     private Scanner lukija;
-
-    public Pelaaja(String nimi, String pelaajanMerkki, Piirtaja piirtaja, Scanner lukija, int id) {
-        this.nimi = nimi;
-        this.piirtaja = piirtaja;
-        this.pelaajanMerkki = pelaajanMerkki;
+    public UserPelaaja(String nimi, String pelaajanMerkki, Piirtaja piirtaja, Scanner lukija, int id) {
+        super(nimi, pelaajanMerkki, piirtaja, id);
         this.lukija = lukija;
-        this.id = id;
     }
 
     public void laitaMerkki() {
@@ -41,7 +33,7 @@ public class Pelaaja {
             if (pylvas >= 1 && pylvas <= 7) {
                 if (piirtaja.vuoronPiirto(pylvas, pelaajanMerkki, vastustajanMerkki, id) == true) {
                     break;
-                }else {
+                } else {
                     System.out.print("Valitsemasi pylväs on täynnä, valitse toinen: ");
                 }
             } else {
@@ -50,23 +42,4 @@ public class Pelaaja {
         }
     }
 
-    public void asetaVastustajanMerkki(String merkki) {
-        vastustajanMerkki = merkki;
-    }
-
-    public String getNimi() {
-        return nimi;
-    }
-
-    public String getOmaMerkki() {
-        return pelaajanMerkki;
-    }
-
-    public String getVastustajanMerkki() {
-        return vastustajanMerkki;
-    }
-
-    public String toString() {
-        return nimi + ", oma merkki " + pelaajanMerkki;
-    }
 }

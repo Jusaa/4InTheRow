@@ -1,10 +1,12 @@
-package com.intherow.intherow;
+package com.intherow.logiikka;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import com.intherow.ui.Piirtaja;
+import com.intherow.logiikka.UserPelaaja;
 import java.util.Scanner;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -40,7 +42,7 @@ public class PelaajaTest {
 
     @Test
     public void uudenPelaajanTiedotOikein() {
-        Pelaaja playerone = new Pelaaja("playerone", "X", new Piirtaja(), new Scanner(System.in));
+        UserPelaaja playerone = new UserPelaaja("playerone", "X", new Piirtaja(), new Scanner(System.in), 1);
 
         assertEquals(playerone.getNimi(), "playerone");
         assertEquals(playerone.getOmaMerkki(), "X");
@@ -48,7 +50,7 @@ public class PelaajaTest {
 
     @Test
     public void vastustajanMerkkiOikein() {
-        Pelaaja playerone = new Pelaaja("playerone", "X", new Piirtaja(), new Scanner(System.in));
+        UserPelaaja playerone = new UserPelaaja("playerone", "X", new Piirtaja(), new Scanner(System.in), 1);
         playerone.asetaVastustajanMerkki("O");
 
         assertEquals(playerone.getVastustajanMerkki(), "O");

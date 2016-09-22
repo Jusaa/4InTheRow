@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.intherow.intherow;
+package com.intherow.ui;
 
+import com.intherow.logiikka.Database;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -14,8 +16,10 @@ import java.util.ArrayList;
 public class Piirtaja {
 
     private ArrayList<ArrayList<Integer>> lista;
+    private Database database;
 
     public Piirtaja() {
+        database = new Database();
     }
 
     public void uusiPeli() {
@@ -24,33 +28,14 @@ public class Piirtaja {
             System.out.println("|   |   |   |   |   |   |   |");
             System.out.println(" --- --- --- --- --- --- --- ");
         }
-
-        lista = new ArrayList<>();
-        ArrayList<Integer> sisaLista;
-        for (int i = 7; i > 0; i--) {
-            sisaLista = new ArrayList<>();
-            for (int ii = 6; ii > 0; ii--) {
-                sisaLista.add(0);
-            }
-            lista.add(sisaLista);
-        }
+        lista = database.uusiLista();
     }
 
     public boolean vuoronPiirto(int pylvas, String merkki, String merkki2, int id) {
 
-        if (lista.get(pylvas - 1).get(5) != 0) {
+        if (database.lisaaListaan(pylvas, merkki, merkki2, id) == false) {
             return false;
         } else {
-            for (int i = 6; i >= 0; i--) {
-                if (i == 0 || lista.get(pylvas - 1).get(i - 1) != 0) {
-                    if (id == 1) {
-                        lista.get(pylvas - 1).set(i, 1);
-                    } else if (id == 2) {
-                        lista.get(pylvas - 1).set(i, 2);
-                    }
-                    break;
-                }
-            }
             System.out.println("\n\n -1- -2- -3- -4- -5- -6- -7- ");
 
             int nro = 6;
@@ -74,9 +59,25 @@ public class Piirtaja {
             return true;
         }
     }
+    
+    public int menuPiirto(Scanner lukija){
+        while (true) {
+            System.out.println("\n[1] Uusi yksinpeli\n[2] Uusi kaksinpeli\n[3] Uusi peli samoilla tiedoilla\n[4] Lopeta");
+            String komento = lukija.nextLine();
+            if (komento.equals("1")) {
+                return 1;
+            } else if (komento.equals("2")) {
+                return 2;
+            } else if (komento.equals("3")) {
+                return 3;
+            } else if(komento.equals("4")){
+                return 4;
+            }
+        }
+    }
 
-    public ArrayList<ArrayList<Integer>> getLista() {
-        return lista;
+    public Database getDatabase() {
+        return database;
     }
 
     public String toString() {

@@ -5,6 +5,7 @@
  */
 package com.intherow.intherow;
 
+import com.intherow.logiikka.Peli;
 import java.util.Scanner;
 
 /**
