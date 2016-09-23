@@ -10,3 +10,4 @@ Päivä | Tunnit | Kuvaus
 16.09.2016 | 4h | JUnit testien kanssa pähkäilemistä, luokkakaavio ja muuta pientä
 18.09.2016 | 1h | Lisäominaisuuksia, nimen valinta, menu
 22.09.2016 | 3h | Cpu pelaajan mahdollisuus, packageiden jakoa, testien korjausta ja siistimistä
+23.09.2016 | 2h | Bugfixejä, testien lisäystä + luokkakaavio päivitys
