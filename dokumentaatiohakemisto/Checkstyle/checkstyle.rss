@@ -25,7 +25,7 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2016</copyright>
     <item>
-      <title>File: 4,
+      <title>File: 8,
              Errors: 0,
              Warnings: 0,
              Infos: 0
@@ -46,7 +46,21 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.intherow.intherow.Pelaaja.java">com/intherow/intherow/Pelaaja.java</a>
+                  <a href="${project.url}/checkstyle.html#com.intherow.logiikka.VoitonTarkistaja.java">com/intherow/logiikka/VoitonTarkistaja.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.intherow.logiikka.Pelaaja.java">com/intherow/logiikka/Pelaaja.java</a>
                 </td>
                 <td>
                   0
@@ -74,7 +88,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.intherow.intherow.Peli.java">com/intherow/intherow/Peli.java</a>
+                  <a href="${project.url}/checkstyle.html#com.intherow.logiikka.CPUPelaaja.java">com/intherow/logiikka/CPUPelaaja.java</a>
                 </td>
                 <td>
                   0
@@ -88,7 +102,49 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.intherow.intherow.Piirtaja.java">com/intherow/intherow/Piirtaja.java</a>
+                  <a href="${project.url}/checkstyle.html#com.intherow.logiikka.Database.java">com/intherow/logiikka/Database.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.intherow.logiikka.Peli.java">com/intherow/logiikka/Peli.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.intherow.ui.Piirtaja.java">com/intherow/ui/Piirtaja.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.intherow.logiikka.UserPelaaja.java">com/intherow/logiikka/UserPelaaja.java</a>
                 </td>
                 <td>
                   0
