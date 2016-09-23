@@ -54,5 +54,16 @@ public class PelaajaTest {
         playerone.asetaVastustajanMerkki("O");
 
         assertEquals(playerone.getVastustajanMerkki(), "O");
+        assertEquals("playerone, oma merkki X, vastustajan merkki O", playerone.toString());
+    }
+
+    @Test
+    public void uudenCPUPelaajanTiedotOikein() {
+        CPUPelaaja cpuplayer = new CPUPelaaja("cpuplayer", "O", new Piirtaja(), 2);
+        cpuplayer.asetaVastustajanMerkki("X");
+
+        assertEquals(cpuplayer.getNimi(), "cpuplayer");
+        assertEquals(cpuplayer.getOmaMerkki(), "O");
+        assertEquals(cpuplayer.getVastustajanMerkki(), "X");
     }
 }

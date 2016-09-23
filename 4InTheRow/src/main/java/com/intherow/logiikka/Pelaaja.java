@@ -45,6 +45,9 @@ public class Pelaaja {
 
     @Override
     public String toString() {
+        if (vastustajanMerkki != null) {
+            return nimi + ", oma merkki " + pelaajanMerkki + ", vastustajan merkki " + vastustajanMerkki;
+        }
         return nimi + ", oma merkki " + pelaajanMerkki;
     }
 }

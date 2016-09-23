@@ -19,6 +19,5 @@ public class Main {
         Peli peli = new Peli();
         peli.aloita();
 
-        
     }
 }

@@ -74,8 +74,21 @@ public class DatabaseTest {
         piirtaja.vuoronPiirto(2, "X", "O", 2);
         piirtaja.vuoronPiirto(2, "X", "O", 1);
         piirtaja.vuoronPiirto(3, "X", "O", 2);
-        System.out.println(piirtaja.toString());
         assertEquals("[[1, 2, 0, 0, 0, 0], [2, 1, 0, 0, 0, 0], [2, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], "
+                + "[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0]]", piirtaja.toString());
+    }
+
+    @Test
+    public void liianPaljonMerkkejaYhteenSarakkeeseen() {
+        Piirtaja piirtaja = new Piirtaja();
+        piirtaja.vuoronPiirto(1, "X", "O", 1);
+        piirtaja.vuoronPiirto(1, "X", "O", 1);
+        piirtaja.vuoronPiirto(1, "X", "O", 1);
+        piirtaja.vuoronPiirto(1, "X", "O", 1);
+        piirtaja.vuoronPiirto(1, "X", "O", 1);
+        piirtaja.vuoronPiirto(1, "X", "O", 1);
+        piirtaja.vuoronPiirto(1, "X", "O", 1);
+        assertEquals("[[1, 1, 1, 1, 1, 1], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], "
                 + "[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0]]", piirtaja.toString());
     }
 }

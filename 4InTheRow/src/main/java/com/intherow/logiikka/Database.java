@@ -52,8 +52,8 @@ public class Database {
     public ArrayList<ArrayList<Integer>> getLista() {
         return lista;
     }
-    
-    public String toString(){
+
+    public String toString() {
         return lista.toString();
     }
 }

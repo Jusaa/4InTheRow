@@ -43,10 +43,24 @@ public class VoitonTarkistaja {
         vinoTarkistusOA(nro, voitto, 6, 5, 1, piirtaja);
         vinoTarkistusOA(nro, voitto, 5, 5, 2, piirtaja);
         vinoTarkistusOA(nro, voitto, 4, 5, 3, piirtaja);
+
+        if (tarkistusnro == 0) {
+            int apunumero = 0;
+            for (int i = 0; i < 7; i++) {
+                if (!piirtaja.getDatabase().getLista().get(i).contains(0)) {
+                    apunumero++;
+                }
+                if (apunumero == 7) {
+                    System.out.println("TASAPELI!");
+                    tarkistusnro = 3;
+                }
+            }
+        }
+
         return tarkistusnro;
     }
 
-    public void dingDingDing(int nro, String voitto, Piirtaja piirtaja) {
+    public void dingDingDing(int nro, String voitto) {
         if (voitto.equals("1111")) {
             System.out.println("DINGDINGDING\nPELAAAJA " + nro + " VOITTI!");
             tarkistusnro = nro;
@@ -70,21 +84,21 @@ public class VoitonTarkistaja {
                 }
             }
 
-            dingDingDing(nro, voitto, piirtaja);
+            dingDingDing(nro, voitto);
         }
     }
 
     public void vinoTarkistusOA(int nro, String voitto, int maara, int laskeva, int nouseva, Piirtaja piirtaja) {
         voitto = "";
         int ii = laskeva;
-        for (int i = nouseva; i < maara; i++) {
+        for (int i = nouseva; i < maara + nouseva; i++) {
             if (piirtaja.getDatabase().getLista().get(i).get(ii) == nro) {
                 voitto = voitto + "1";
             } else {
                 voitto = "";
             }
             ii--;
-            dingDingDing(nro, voitto, piirtaja);
+            dingDingDing(nro, voitto);
         }
     }
 
@@ -97,7 +111,7 @@ public class VoitonTarkistaja {
                 } else {
                     voitto = "";
                 }
-                dingDingDing(nro, voitto, piirtaja);
+                dingDingDing(nro, voitto);
             }
         }
     }
@@ -112,7 +126,7 @@ public class VoitonTarkistaja {
                 } else {
                     voitto = "";
                 }
-                dingDingDing(nro, voitto, piirtaja);
+                dingDingDing(nro, voitto);
             }
         }
     }
