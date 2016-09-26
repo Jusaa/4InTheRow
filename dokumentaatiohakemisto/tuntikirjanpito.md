@@ -14,3 +14,5 @@ Viikko 3||
 18.09.2016 | 1h | Lisäominaisuuksia, nimen valinta, menu
 22.09.2016 | 3h | Cpu pelaajan mahdollisuus, packageiden jakoa, testien korjausta ja siistimistä
 23.09.2016 | 3h | Bugfixejä, testien lisäystä, luokkakaavio ja muuta pientä
+Viikko 4||
+26.09.2016 | 1h | Pelaajainterface implementointi ja pieniä muokkauksia 
