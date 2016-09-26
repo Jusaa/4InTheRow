@@ -13,12 +13,22 @@ import java.util.Scanner;
  *
  * @author Jusaa
  */
-public class CPUPelaaja extends Pelaaja {
+public class CPUPelaaja implements Pelaaja {
 
     Random random;
+    private String nimi;
+    private int id;
+    private String pelaajanMerkki;
+    private String vastustajanMerkki;
+    private Piirtaja piirtaja;
+    private int voitot;
 
     public CPUPelaaja(String nimi, String pelaajanMerkki, Piirtaja piirtaja, int id) {
-        super(nimi, pelaajanMerkki, piirtaja, id);
+        this.nimi = nimi;
+        this.piirtaja = piirtaja;
+        this.pelaajanMerkki = pelaajanMerkki;
+        this.id = id;
+        voitot = 0;
         random = new Random();
     }
 
@@ -29,6 +39,40 @@ public class CPUPelaaja extends Pelaaja {
                 break;
             }
         }
-
     }
+    
+    public void asetaVastustajanMerkki(String merkki) {
+        vastustajanMerkki = merkki;
+    }
+
+    public String getNimi() {
+        return nimi;
+    }
+
+    public String getOmaMerkki() {
+        return pelaajanMerkki;
+    }
+
+    public String getVastustajanMerkki() {
+        return vastustajanMerkki;
+    }
+
+    public void voitti() {
+        voitot++;
+    }
+    
+    public int getVoitot() {
+        return voitot;
+    }
+    
+    @Override
+    public String toString() {
+        if (vastustajanMerkki != null) {
+            return nimi + ", oma merkki " + pelaajanMerkki + ", vastustajan merkki " + vastustajanMerkki;
+        }
+        return nimi + ", oma merkki " + pelaajanMerkki;
+    }
+
+    
+
 }

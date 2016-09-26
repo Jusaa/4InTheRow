@@ -12,13 +12,23 @@ import java.util.Scanner;
  *
  * @author Jusaa
  */
-public class UserPelaaja extends Pelaaja {
+public class UserPelaaja implements Pelaaja {
 
     private Scanner lukija;
+    private String nimi;
+    private int id;
+    private String pelaajanMerkki;
+    private String vastustajanMerkki;
+    private Piirtaja piirtaja;
+    private int voitot;
 
     public UserPelaaja(String nimi, String pelaajanMerkki, Piirtaja piirtaja, Scanner lukija, int id) {
-        super(nimi, pelaajanMerkki, piirtaja, id);
+        this.nimi = nimi;
+        this.piirtaja = piirtaja;
+        this.pelaajanMerkki = pelaajanMerkki;
+        this.id = id;
         this.lukija = lukija;
+        voitot = 0;
     }
 
     public void laitaMerkki() {
@@ -41,6 +51,38 @@ public class UserPelaaja extends Pelaaja {
                 System.out.print("Kirjoita numero 1-7, haluamasi kohdan mukaan: ");
             }
         }
+    }
+
+    public void asetaVastustajanMerkki(String merkki) {
+        vastustajanMerkki = merkki;
+    }
+
+    public String getNimi() {
+        return nimi;
+    }
+
+    public String getOmaMerkki() {
+        return pelaajanMerkki;
+    }
+
+    public String getVastustajanMerkki() {
+        return vastustajanMerkki;
+    }
+
+    public void voitti() {
+        voitot++;
+    }
+
+    public int getVoitot() {
+        return voitot;
+    }
+    
+    @Override
+    public String toString() {
+        if (vastustajanMerkki != null) {
+            return nimi + ", oma merkki " + pelaajanMerkki + ", vastustajan merkki " + vastustajanMerkki;
+        }
+        return nimi + ", oma merkki " + pelaajanMerkki;
     }
 
 }

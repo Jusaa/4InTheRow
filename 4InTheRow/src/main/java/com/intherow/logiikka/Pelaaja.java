@@ -5,49 +5,24 @@
  */
 package com.intherow.logiikka;
 
-import com.intherow.ui.Piirtaja;
-import java.util.Scanner;
 
 /**
  *
  * @author Jusaa
  */
-public class Pelaaja {
+public interface Pelaaja {
 
-    public String nimi;
-    public int id;
-    public String pelaajanMerkki;
-    public String vastustajanMerkki;
-    public Piirtaja piirtaja;
+    public void laitaMerkki();
+    
+    public String getNimi();
 
-    public Pelaaja(String nimi, String pelaajanMerkki, Piirtaja piirtaja, int id) {
-        this.nimi = nimi;
-        this.piirtaja = piirtaja;
-        this.pelaajanMerkki = pelaajanMerkki;
-        this.id = id;
-    }
+    public String getOmaMerkki();
 
-    public void asetaVastustajanMerkki(String merkki) {
-        vastustajanMerkki = merkki;
-    }
+    public String getVastustajanMerkki();
 
-    public String getNimi() {
-        return nimi;
-    }
-
-    public String getOmaMerkki() {
-        return pelaajanMerkki;
-    }
-
-    public String getVastustajanMerkki() {
-        return vastustajanMerkki;
-    }
-
-    @Override
-    public String toString() {
-        if (vastustajanMerkki != null) {
-            return nimi + ", oma merkki " + pelaajanMerkki + ", vastustajan merkki " + vastustajanMerkki;
-        }
-        return nimi + ", oma merkki " + pelaajanMerkki;
-    }
+    public void asetaVastustajanMerkki(String o);
+    
+    public void voitti();
+    
+    public int getVoitot();
 }
