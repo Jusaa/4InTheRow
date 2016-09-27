@@ -6,9 +6,11 @@
 package com.intherow.logiikka;
 
 import com.intherow.ui.Piirtaja;
-import com.intherow.logiikka.UserPelaaja;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -62,7 +64,7 @@ public class Peli {
 
     public void aloitaKaksinPeli() {
 
-        // KONSTRUKTORISSA TOISTUVAT MÄÄRITTELYT VAIN TESTEJÄ VARTEN
+        // KONSTRUKTORISSA TOISTUVAT MÄÄRITTELYT VAIN TESTEJÃ„ VARTEN
         System.out.print("Pelaaja 1, kerro nimesi: ");
         String playeronenimi = lukija.nextLine();
         System.out.print("Entä mitä merkkiä haluat käyttää pelissä? ");
@@ -100,10 +102,14 @@ public class Peli {
         run();
     }
 
-    public void run(){
+    public void run() {
         
         tarkistusnro = 0;
-        piirtaja.uusiPeli();
+        try {
+            piirtaja.uusiPeli();
+        } catch (IOException ex) {
+            
+        }
         while (true) {
             playerone.laitaMerkki();
             tarkistusnro = voitonTarkistaja.tarkasta(1, piirtaja);

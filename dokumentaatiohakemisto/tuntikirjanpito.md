@@ -16,3 +16,4 @@ Viikko 3||
 23.09.2016 | 3h | Bugfixejä, testien lisäystä, luokkakaavio ja muuta pientä
 Viikko 4||
 26.09.2016 | 1h | Pelaajainterface implementointi ja pieniä muokkauksia 
+27.09.2016 | 2h | Swingin tutkiskelua ja prototyyppi graafisesta käyttöliittymästä
