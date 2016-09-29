@@ -5,7 +5,7 @@
  */
 package com.intherow.ui;
 
-import com.intherow.logiikka.Database;
+import com.intherow.logiikka.Tietokanta;
 import com.intherow.logiikka.HiirenKuuntelija;
 import java.awt.GridLayout;
 import java.awt.image.BufferedImage;
@@ -24,14 +24,14 @@ import javax.swing.JLabel;
  */
 public class Piirtaja {
 
-    private Database database;
+    private Tietokanta database;
     private JFrame alusta;
     private ImageIcon tyhjaruutu;
     private ImageIcon pelaajan1ruutu;
     private ImageIcon pelaajan2ruutu;
 
     public Piirtaja() {
-        database = new Database();
+        database = new Tietokanta();
         database.uusiLista();
 
         BufferedImage bufferedTyhjaruutu = null;
@@ -55,25 +55,17 @@ public class Piirtaja {
     }
 
     public void uusiPeli() throws IOException {
-        System.out.println(" -1- -2- -3- -4- -5- -6- -7- ");
-        for (int i = 0; i < 6; i++) {
-            System.out.println("|   |   |   |   |   |   |   |");
-            System.out.println(" --- --- --- --- --- --- --- ");
-        }
-
+        
         database.uusiLista();
         alusta.getContentPane().removeAll();
 
         for (int i = 1; i < 8; i++) {
             alusta.getContentPane().add(new JButton("" + i));
             alusta.getContentPane().getComponent(i - 1).addMouseListener(new HiirenKuuntelija(i, this));
-
         }
-
         for (int i = 0; i < 42; i++) {
             alusta.getContentPane().add(new JLabel(tyhjaruutu));
         }
-
         alusta.pack();
         alusta.setVisible(true);
     }
@@ -83,30 +75,19 @@ public class Piirtaja {
         if (database.lisaaListaan(pylvas, merkki, merkki2, id) == false) {
             return false;
         } else {
-
-            System.out.println("\n\n -1- -2- -3- -4- -5- -6- -7- ");
             int ruutuId = 0;
             int nro = 6;
             for (int i = nro; i > 0; i--) {
                 for (int ii = 0; ii < 7; ii++) {
-                    if (database.getLista().get(ii).get(nro - 1) == 0) {
-                        System.out.print("|   ");
-                    } else if (database.getLista().get(ii).get(nro - 1) == 1 && id == 1) {
-                        System.out.print("| " + merkki + " ");
+                    if (database.getLista().get(ii).get(nro - 1) == 1 && id == 1) {
                         ruudunMuokkaus(ruutuId + 7, id);
-                    } else if (database.getLista().get(ii).get(nro - 1) == 2 && id == 1) {
-                        System.out.print("| " + merkki2 + " ");
                     } else if (database.getLista().get(ii).get(nro - 1) == 2 && id == 2) {
                         ruudunMuokkaus(ruutuId + 7, id);
-                        System.out.print("| " + merkki + " ");
-                    } else if (database.getLista().get(ii).get(nro - 1) == 1 && id == 2) {
-                        System.out.print("| " + merkki2 + " ");
                     }
 
                     ruutuId++;
                 }
                 nro--;
-                System.out.println("|\n --- --- --- --- --- --- --- ");
 
             }
             alusta.validate();
@@ -140,7 +121,7 @@ public class Piirtaja {
 
     }
 
-    public Database getDatabase() {
+    public Tietokanta getDatabase() {
         return database;
     }
 

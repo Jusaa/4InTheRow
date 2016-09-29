@@ -138,12 +138,12 @@ public class Peli {
         return tarkistusnro;
     }
 
-    public String getPlayerOneString() {
-        return playerone.toString();
+    public Pelaaja getPlayerOne() {
+        return playerone;
     }
 
-    public String getPlayerTwoString() {
-        return playertwo.toString();
+    public Pelaaja getPlayerTwo() {
+        return playertwo;
     }
 
     public Piirtaja getPiirtaja() {

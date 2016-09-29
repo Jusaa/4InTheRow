@@ -11,11 +11,11 @@ import java.util.ArrayList;
  *
  * @author Jusaa
  */
-public class Database {
+public class Tietokanta {
 
     private ArrayList<ArrayList<Integer>> lista;
 
-    public Database() {
+    public Tietokanta() {
 
     }
 
