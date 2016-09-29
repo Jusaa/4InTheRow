@@ -5,6 +5,8 @@
  */
 package com.intherow.logiikka;
 
+import com.intherow.ui.Piirtaja;
+
 
 /**
  *
@@ -12,7 +14,7 @@ package com.intherow.logiikka;
  */
 public interface Pelaaja {
 
-    public void laitaMerkki();
+    public void laitaMerkki(Piirtaja piirtaja);
     
     public String getNimi();
 
@@ -25,4 +27,6 @@ public interface Pelaaja {
     public void voitti();
     
     public int getVoitot();
+    
+    public Piirtaja getPiirtaja();
 }

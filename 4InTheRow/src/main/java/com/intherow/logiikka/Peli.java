@@ -36,18 +36,6 @@ public class Peli {
         playertwo.asetaVastustajanMerkki("X");
         voitonTarkistaja = new VoitonTarkistaja();
     }
-    
-    //Konstruktori yksinpelin testaamiselle
-    public Peli(String o) {
-        lukija = new Scanner(System.in);
-        tarkistusnro = 0;
-        piirtaja = new Piirtaja();
-        playerone = new UserPelaaja("playerone", "X", piirtaja, lukija, 1);
-        playertwo = new CPUPelaaja("playertwo", "O", piirtaja, 2);
-        playerone.asetaVastustajanMerkki("O");
-        playertwo.asetaVastustajanMerkki("X");
-        voitonTarkistaja = new VoitonTarkistaja();
-    }
 
     public void aloita() {
         voitonTarkistaja = new VoitonTarkistaja();
@@ -111,13 +99,14 @@ public class Peli {
             
         }
         while (true) {
-            playerone.laitaMerkki();
+            playerone.laitaMerkki(piirtaja);
             tarkistusnro = voitonTarkistaja.tarkasta(1, piirtaja);
             if (tarkistusnro != 0) {
                 playerone.voitti();
                 break;
             }
-            playertwo.laitaMerkki();
+            
+            playertwo.laitaMerkki(piirtaja);
             tarkistusnro = voitonTarkistaja.tarkasta(2, piirtaja);
             if (tarkistusnro != 0) {
                 playertwo.voitti();

@@ -32,7 +32,7 @@ public class CPUPelaaja implements Pelaaja {
         random = new Random();
     }
 
-    public void laitaMerkki() {
+    public void laitaMerkki(Piirtaja piirtaja) {
         while (true) {
             int pylvas = random.nextInt(6) + 1;
             if (piirtaja.vuoronPiirto(pylvas, pelaajanMerkki, vastustajanMerkki, id) == true) {
@@ -40,7 +40,7 @@ public class CPUPelaaja implements Pelaaja {
             }
         }
     }
-    
+
     public void asetaVastustajanMerkki(String merkki) {
         vastustajanMerkki = merkki;
     }
@@ -60,11 +60,16 @@ public class CPUPelaaja implements Pelaaja {
     public void voitti() {
         voitot++;
     }
-    
+
     public int getVoitot() {
         return voitot;
     }
-    
+
+    @Override
+    public Piirtaja getPiirtaja() {
+        return piirtaja;
+    }
+
     @Override
     public String toString() {
         if (vastustajanMerkki != null) {
@@ -72,7 +77,5 @@ public class CPUPelaaja implements Pelaaja {
         }
         return nimi + ", oma merkki " + pelaajanMerkki;
     }
-
-    
 
 }

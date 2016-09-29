@@ -31,7 +31,7 @@ public class UserPelaaja implements Pelaaja {
         voitot = 0;
     }
 
-    public void laitaMerkki() {
+    public void laitaMerkki(Piirtaja piirtaja) {
         System.out.print(nimi + "\nMihin laitetaan merkki? ");
         int pylvas;
         while (true) {
@@ -76,6 +76,12 @@ public class UserPelaaja implements Pelaaja {
     public int getVoitot() {
         return voitot;
     }
+
+    @Override
+    public Piirtaja getPiirtaja() {
+        return piirtaja;
+    }
+    
     
     @Override
     public String toString() {
