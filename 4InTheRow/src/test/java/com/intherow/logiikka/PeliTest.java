@@ -17,9 +17,11 @@ import static org.junit.Assert.*;
  * @author Jusaa
  */
 public class PeliTest {
+
     Peli peli;
+
     public PeliTest() {
-        
+
     }
 
     @BeforeClass
@@ -278,6 +280,61 @@ public class PeliTest {
         peli.getPiirtaja().getDatabase().lisaaListaan(4, "X", "O", 1);
         peli.getPiirtaja().getDatabase().lisaaListaan(4, "O", "X", 2);
         assertEquals(peli.getVoitonTarkistaja().tarkasta(2, peli.getPiirtaja()), 2);
+    }
+
+    @Test
+    public void tasapelinTunnistusOikein() {
+        peli.getPiirtaja().getDatabase().lisaaListaan(1, "X", "O", 1);
+        peli.getPiirtaja().getDatabase().lisaaListaan(1, "X", "O", 1);
+        peli.getPiirtaja().getDatabase().lisaaListaan(1, "X", "O", 1);
+        peli.getPiirtaja().getDatabase().lisaaListaan(1, "X", "O", 2);
+        peli.getPiirtaja().getDatabase().lisaaListaan(1, "X", "O", 2);
+        peli.getPiirtaja().getDatabase().lisaaListaan(1, "X", "O", 2);
+
+        peli.getPiirtaja().getDatabase().lisaaListaan(2, "X", "O", 2);
+        peli.getPiirtaja().getDatabase().lisaaListaan(2, "X", "O", 2);
+        peli.getPiirtaja().getDatabase().lisaaListaan(2, "X", "O", 2);
+        peli.getPiirtaja().getDatabase().lisaaListaan(2, "X", "O", 1);
+        peli.getPiirtaja().getDatabase().lisaaListaan(2, "X", "O", 1);
+        peli.getPiirtaja().getDatabase().lisaaListaan(2, "X", "O", 1);
+
+        peli.getPiirtaja().getDatabase().lisaaListaan(3, "X", "O", 1);
+        peli.getPiirtaja().getDatabase().lisaaListaan(3, "X", "O", 1);
+        peli.getPiirtaja().getDatabase().lisaaListaan(3, "X", "O", 1);
+        peli.getPiirtaja().getDatabase().lisaaListaan(3, "X", "O", 2);
+        peli.getPiirtaja().getDatabase().lisaaListaan(3, "X", "O", 2);
+        peli.getPiirtaja().getDatabase().lisaaListaan(3, "X", "O", 2);
+
+        peli.getPiirtaja().getDatabase().lisaaListaan(4, "X", "O", 2);
+        peli.getPiirtaja().getDatabase().lisaaListaan(4, "X", "O", 2);
+        peli.getPiirtaja().getDatabase().lisaaListaan(4, "X", "O", 2);
+        peli.getPiirtaja().getDatabase().lisaaListaan(4, "X", "O", 1);
+        peli.getPiirtaja().getDatabase().lisaaListaan(4, "X", "O", 1);
+        peli.getPiirtaja().getDatabase().lisaaListaan(4, "X", "O", 1);
+
+        peli.getPiirtaja().getDatabase().lisaaListaan(5, "X", "O", 1);
+        peli.getPiirtaja().getDatabase().lisaaListaan(5, "X", "O", 1);
+        peli.getPiirtaja().getDatabase().lisaaListaan(5, "X", "O", 1);
+        peli.getPiirtaja().getDatabase().lisaaListaan(5, "X", "O", 2);
+        peli.getPiirtaja().getDatabase().lisaaListaan(5, "X", "O", 2);
+        peli.getPiirtaja().getDatabase().lisaaListaan(5, "X", "O", 2);
+
+        peli.getPiirtaja().getDatabase().lisaaListaan(6, "X", "O", 2);
+        peli.getPiirtaja().getDatabase().lisaaListaan(6, "X", "O", 2);
+        peli.getPiirtaja().getDatabase().lisaaListaan(6, "X", "O", 2);
+        peli.getPiirtaja().getDatabase().lisaaListaan(6, "X", "O", 1);
+        peli.getPiirtaja().getDatabase().lisaaListaan(6, "X", "O", 1);
+        peli.getPiirtaja().getDatabase().lisaaListaan(6, "X", "O", 1);
+
+        peli.getPiirtaja().getDatabase().lisaaListaan(7, "X", "O", 1);
+        peli.getPiirtaja().getDatabase().lisaaListaan(7, "X", "O", 1);
+        peli.getPiirtaja().getDatabase().lisaaListaan(7, "X", "O", 1);
+        peli.getPiirtaja().getDatabase().lisaaListaan(7, "X", "O", 2);
+        peli.getPiirtaja().getDatabase().lisaaListaan(7, "X", "O", 2);
+        peli.getPiirtaja().getDatabase().lisaaListaan(7, "X", "O", 2);
+
+        assertEquals(peli.getVoitonTarkistaja().tarkasta(1, peli.getPiirtaja()), 3);
+        assertEquals(peli.getVoitonTarkistaja().tarkasta(2, peli.getPiirtaja()), 3);
     }
 
 }

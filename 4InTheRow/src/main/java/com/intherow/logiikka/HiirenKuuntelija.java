@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.intherow.logiikka;
 
 import com.intherow.ui.Piirtaja;
@@ -14,16 +9,19 @@ import java.awt.event.MouseListener;
  * @author Jusaa
  */
 public class HiirenKuuntelija implements MouseListener {
-    private int i;
+
+    private int pylvas;
     private Piirtaja piirtaja;
+
     public HiirenKuuntelija(int i, Piirtaja piirtaja) {
-        this.i = i;
+        this.pylvas = i;
         this.piirtaja = piirtaja;
-        
+
     }
+
     @Override
     public void mouseClicked(MouseEvent e) {
-        piirtaja.vuoronPiirto(i, "X", "O", 1);
+        piirtaja.vuoronPiirto(pylvas, "X", "O", 1);
     }
 
     @Override
@@ -42,5 +40,3 @@ public class HiirenKuuntelija implements MouseListener {
     public void mouseExited(MouseEvent e) {
     }
 }
-
-

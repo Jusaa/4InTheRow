@@ -1,16 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.intherow.logiikka;
 
 import com.intherow.ui.Piirtaja;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -37,6 +30,9 @@ public class Peli {
         voitonTarkistaja = new VoitonTarkistaja();
     }
 
+    /**
+     * Aloittaa uuden pelin pelaajan inputin mukaan
+     */
     public void aloita() {
         voitonTarkistaja = new VoitonTarkistaja();
         int valinta = piirtaja.menuPiirto(lukija);
@@ -46,10 +42,12 @@ public class Peli {
             aloitaKaksinPeli();
         } else if (valinta == 3) {
             run();
-        } else if (valinta == 4) {
-        }
+        } 
     }
 
+    /**
+     * Aloittaa uuden kaksinpelin
+     */
     public void aloitaKaksinPeli() {
 
         // KONSTRUKTORISSA TOISTUVAT MÄÄRITTELYT VAIN TESTEJÃ„ VARTEN
@@ -71,6 +69,9 @@ public class Peli {
         run();
     }
 
+    /**
+     * Aloittaa uuden yksinpelin
+     */
     public void aloitaYksinPeli() {
         System.out.print("Kerro nimesi: ");
         String playeronenimi = lukija.nextLine();
@@ -90,13 +91,16 @@ public class Peli {
         run();
     }
 
+    /**
+     * Pistää pelin pyörimään
+     */
     public void run() {
-        
+
         tarkistusnro = 0;
         try {
             piirtaja.uusiPeli();
         } catch (IOException ex) {
-            
+
         }
         while (true) {
             playerone.laitaMerkki(piirtaja);
@@ -105,7 +109,7 @@ public class Peli {
                 playerone.voitti();
                 break;
             }
-            
+
             playertwo.laitaMerkki(piirtaja);
             tarkistusnro = voitonTarkistaja.tarkasta(2, piirtaja);
             if (tarkistusnro != 0) {
@@ -113,21 +117,21 @@ public class Peli {
                 break;
             }
         }
-        if(playertwo.getClass().equals(playerone.getClass())){
+        if (playertwo.getClass().equals(playerone.getClass())) {
             System.out.println("DINGDINGDING\nPELAAAJA " + tarkistusnro + " VOITTI!");
             System.out.println("Pelaaja 1 voitot: " + playerone.getVoitot() + "\nPelaaja 2 voitot: " + playertwo.getVoitot());
-        }else{
-            if(tarkistusnro == 1){
+        } else {
+            if (tarkistusnro == 1) {
                 System.out.println("DINGDINGDING\nVOITIT PELIN");
-            }else{
+            } else {
                 System.out.println("DINGDINGDING\nHÄVISIT PELIN");
             }
             System.out.println("Pelaaja 1 voitot: " + playerone.getVoitot() + "\nTietokoneen voitot: " + playertwo.getVoitot());
         }
-        
+
         tarkistusnro = 0;
         aloita();
-        
+
     }
 
     public ArrayList<ArrayList<Integer>> getLista() {

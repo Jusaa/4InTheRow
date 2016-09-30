@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.intherow.logiikka;
 
 import com.intherow.ui.Piirtaja;
 import java.util.Random;
-import java.util.Scanner;
 
 /**
  *
@@ -30,9 +24,16 @@ public class CPUPelaaja implements Pelaaja {
         this.id = id;
         voitot = 0;
         random = new Random();
+        //this.vastustajanMerkki = null;
     }
 
+    /**
+     * Metodi laittaa merkin cpupelaajan tahdon mukaisesti
+     *
+     * @param piirtaja hakee alustan mihin laittaa merkin
+     */
     public void laitaMerkki(Piirtaja piirtaja) {
+        //Graafiseen liittymään siirtymisen jälkeen tämän parantaminen
         while (true) {
             int pylvas = random.nextInt(6) + 1;
             if (piirtaja.vuoronPiirto(pylvas, pelaajanMerkki, vastustajanMerkki, id) == true) {
@@ -41,8 +42,20 @@ public class CPUPelaaja implements Pelaaja {
         }
     }
 
+    /**
+     * Metodi asettaa vastustajan merkin
+     *
+     * @param merkki asettaa vastustajan merkin jotta piirtäminen onnistuu
+     */
     public void asetaVastustajanMerkki(String merkki) {
         vastustajanMerkki = merkki;
+    }
+
+    /**
+     * lisää voittojen määrää
+     */
+    public void voitti() {
+        voitot++;
     }
 
     public String getNimi() {
@@ -55,10 +68,6 @@ public class CPUPelaaja implements Pelaaja {
 
     public String getVastustajanMerkki() {
         return vastustajanMerkki;
-    }
-
-    public void voitti() {
-        voitot++;
     }
 
     public int getVoitot() {

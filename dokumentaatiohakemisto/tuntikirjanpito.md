@@ -18,3 +18,4 @@ Viikko 4||
 26.09.2016 | 1h | Pelaajainterface implementointi ja pieniä muokkauksia 
 27.09.2016 | 2h | Swingin tutkiskelua ja prototyyppi graafisesta käyttöliittymästä
 29.09.2016 | 4h | Grafiikkaliittymän edistämistä 
+30.09.2016 | 2h | Javadoc, testit

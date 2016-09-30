@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.intherow.logiikka;
 
 import com.intherow.ui.Piirtaja;
@@ -20,6 +15,13 @@ public class VoitonTarkistaja {
         tarkistusnro = 0;
     }
 
+    /**
+     * Metodi tarkastaa onko pelaaja voittanut
+     *
+     * @param nro pelaajan id numero kumpi laittoi viime merkin
+     * @param piirtaja piirtaja jossa pelikenttä tallessa
+     * @return tarkistusnumero, joka kertoo tarkastuksen tuloksen
+     */
     public int tarkasta(int nro, Piirtaja piirtaja) {
         String voitto = "";
         this.piirtaja = piirtaja;
@@ -61,12 +63,25 @@ public class VoitonTarkistaja {
         return tarkistusnro;
     }
 
+    /**
+     * Metodi asettaa tarkistusnumeron pelaajan id'ksi jos tämä on voittanut
+     *
+     * @param nro pelaajan id numero
+     * @param voitto tarkastus String joka kertoo voittiko pelaaja
+     */
     public void dingDingDing(int nro, String voitto) {
         if (voitto.equals("1111")) {
             tarkistusnro = nro;
         }
     }
 
+    /**
+     * Metodi tarkastaa vinorivit Oikealta Ylös
+     *
+     * @param nro pelaajan id numero
+     * @param maara kuinka monta kohtaa vinorivissä
+     * @param getOffset säätää aloituspaikkaa
+     */
     public void vinoTarkistusOY(int nro, int maara, int getOffset) {
         String voitto = "";
         for (int i = 0; i < maara; i++) {
@@ -88,6 +103,14 @@ public class VoitonTarkistaja {
         }
     }
 
+    /**
+     * Metodi tarkastaa vinorivit Oikealta Alas
+     *
+     * @param nro pelaajan id numero
+     * @param maara kuinka monta kohtaa vinorivissä
+     * @param laskeva aloituspaikan määritys
+     * @param nouseva aloituspaikan määritys
+     */
     public void vinoTarkistusOA(int nro, int maara, int laskeva, int nouseva) {
         String voitto = "";
         int ii = laskeva;
@@ -102,6 +125,11 @@ public class VoitonTarkistaja {
         }
     }
 
+    /**
+     * Metodi tarkastaa voiton vaakariveiltä
+     *
+     * @param nro pelaajan id numero
+     */
     public void vaakaTarkistus(int nro) {
         String voitto;
         for (int i = 0; i < 6; i++) {
@@ -117,6 +145,11 @@ public class VoitonTarkistaja {
         }
     }
 
+    /**
+     * Metodi tarkastaa voiton pystyriveiltä
+     *
+     * @param nro pelaajan id numero
+     */
     public void pystyTarkistus(int nro) {
         String voitto;
         for (int i = 6; i >= 0; i--) {

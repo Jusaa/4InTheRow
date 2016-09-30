@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.intherow.ui;
 
 import com.intherow.logiikka.Tietokanta;
@@ -19,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 /**
+ * Luokka hoitaa graafisen pelitoteutuksen piirtämisen
  *
  * @author Jusaa
  */
@@ -54,8 +50,13 @@ public class Piirtaja {
 
     }
 
+    /**
+     * Metodi alustaa uuden pelin
+     *
+     * @throws IOException if MouseListener fails
+     */
     public void uusiPeli() throws IOException {
-        
+
         database.uusiLista();
         alusta.getContentPane().removeAll();
 
@@ -70,6 +71,15 @@ public class Piirtaja {
         alusta.setVisible(true);
     }
 
+    /**
+     * Metodi lisää pelikentälle uuden merkin
+     *
+     * @param pylvas mihin pylvääseen merkki laitetaan
+     * @param merkki pelaajan oma merkki
+     * @param merkki2 vastustajan merkki
+     * @param id pelaajan oma id arvo
+     * @return lisättiinkö uusi merkki vai ei
+     */
     public boolean vuoronPiirto(int pylvas, String merkki, String merkki2, int id) {
 
         if (database.lisaaListaan(pylvas, merkki, merkki2, id) == false) {
@@ -95,6 +105,12 @@ public class Piirtaja {
         }
     }
 
+    /**
+     * Metodi piirtää menun jonka avulla pelaaja päättää miten jatketaan
+     *
+     * @param lukija scanner joka lukee pelaajan inputin
+     * @return valinta miten jatketaan peliä
+     */
     public int menuPiirto(Scanner lukija) {
         while (true) {
             System.out.println("\n[1] Uusi yksinpeli\n[2] Uusi kaksinpeli\n[3] Uusi peli samoilla tiedoilla\n[4] Lopeta");
@@ -111,6 +127,12 @@ public class Piirtaja {
         }
     }
 
+    /**
+     * Metodi muuttaa graafisessa liittymässä tietyn ruudun
+     *
+     * @param ruutuId ruudun id numero
+     * @param id pelaajan id numero
+     */
     public void ruudunMuokkaus(int ruutuId, int id) {
         alusta.getContentPane().remove(ruutuId);
         if (id == 1) {

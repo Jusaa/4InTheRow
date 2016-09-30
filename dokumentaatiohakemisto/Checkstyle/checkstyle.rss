@@ -25,7 +25,7 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2016</copyright>
     <item>
-      <title>File: 8,
+      <title>File: 9,
              Errors: 0,
              Warnings: 0,
              Infos: 0
@@ -102,7 +102,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.intherow.logiikka.Database.java">com/intherow/logiikka/Database.java</a>
+                  <a href="${project.url}/checkstyle.html#com.intherow.logiikka.HiirenKuuntelija.java">com/intherow/logiikka/HiirenKuuntelija.java</a>
                 </td>
                 <td>
                   0
@@ -117,6 +117,20 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#com.intherow.logiikka.Peli.java">com/intherow/logiikka/Peli.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.intherow.logiikka.Tietokanta.java">com/intherow/logiikka/Tietokanta.java</a>
                 </td>
                 <td>
                   0

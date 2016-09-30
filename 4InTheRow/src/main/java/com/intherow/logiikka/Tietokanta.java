@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.intherow.logiikka;
 
 import java.util.ArrayList;
@@ -19,6 +14,9 @@ public class Tietokanta {
 
     }
 
+    /**
+     * Alustaa uuden listan uutta peliä varten
+     */
     public void uusiLista() {
         lista = new ArrayList<>();
         ArrayList<Integer> sisaLista;
@@ -31,6 +29,15 @@ public class Tietokanta {
         }
     }
 
+    /**
+     * Lisää tietokannan listaan merkin oikeaan paikkaan
+     *
+     * @param pylvas mihin pylvääseen merkki laitetaan
+     * @param merkki pelaajan oma merkki
+     * @param merkki2 vastustajan merkki
+     * @param id pelaajan oma id arvo
+     * @return lisättiinkö uusi merkki vai ei
+     */
     public boolean lisaaListaan(int pylvas, String merkki, String merkki2, int id) {
         if (lista.get(pylvas - 1).get(5) != 0) {
             return false;

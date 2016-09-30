@@ -6,7 +6,6 @@ package com.intherow.logiikka;
  * and open the template in the editor.
  */
 import com.intherow.ui.Piirtaja;
-import com.intherow.logiikka.UserPelaaja;
 import java.util.Scanner;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -21,6 +20,9 @@ import static org.junit.Assert.*;
  */
 public class PelaajaTest {
 
+    Pelaaja playerone;
+    Pelaaja cpuplayer;
+
     public PelaajaTest() {
     }
 
@@ -34,6 +36,8 @@ public class PelaajaTest {
 
     @Before
     public void setUp() {
+        playerone = new UserPelaaja("playerone", "X", new Piirtaja(), new Scanner(System.in), 1);
+        cpuplayer = new CPUPelaaja("cpuplayer", "O", new Piirtaja(), 2);
     }
 
     @After
@@ -42,15 +46,14 @@ public class PelaajaTest {
 
     @Test
     public void uudenPelaajanTiedotOikein() {
-        UserPelaaja playerone = new UserPelaaja("playerone", "X", new Piirtaja(), new Scanner(System.in), 1);
 
         assertEquals(playerone.getNimi(), "playerone");
         assertEquals(playerone.getOmaMerkki(), "X");
+        assertEquals("playerone, oma merkki X", playerone.toString());
     }
 
     @Test
     public void vastustajanMerkkiOikein() {
-        UserPelaaja playerone = new UserPelaaja("playerone", "X", new Piirtaja(), new Scanner(System.in), 1);
         playerone.asetaVastustajanMerkki("O");
 
         assertEquals(playerone.getVastustajanMerkki(), "O");
@@ -58,12 +61,42 @@ public class PelaajaTest {
     }
 
     @Test
+    public void vastustajanMerkkiOikein2() {
+        cpuplayer.asetaVastustajanMerkki("X");
+
+        assertEquals(cpuplayer.getVastustajanMerkki(), "X");
+        assertEquals("cpuplayer, oma merkki O, vastustajan merkki X", cpuplayer.toString());
+    }
+
+    @Test
     public void uudenCPUPelaajanTiedotOikein() {
-        CPUPelaaja cpuplayer = new CPUPelaaja("cpuplayer", "O", new Piirtaja(), 2);
+
         cpuplayer.asetaVastustajanMerkki("X");
 
         assertEquals(cpuplayer.getNimi(), "cpuplayer");
         assertEquals(cpuplayer.getOmaMerkki(), "O");
         assertEquals(cpuplayer.getVastustajanMerkki(), "X");
+    }
+
+    @Test
+    public void pelaajanVoittojenMaaraOikein() {
+        assertEquals(playerone.getVoitot(), 0);
+        playerone.voitti();
+        assertEquals(playerone.getVoitot(), 1);
+        playerone.voitti();
+        playerone.voitti();
+        playerone.voitti();
+        assertEquals(playerone.getVoitot(), 4);
+    }
+
+    @Test
+    public void cpupelaajanVoittojeenMaaraOikein() {
+        assertEquals(cpuplayer.getVoitot(), 0);
+        cpuplayer.voitti();
+        assertEquals(cpuplayer.getVoitot(), 1);
+        cpuplayer.voitti();
+        cpuplayer.voitti();
+        cpuplayer.voitti();
+        assertEquals(cpuplayer.getVoitot(), 4);
     }
 }

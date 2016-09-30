@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.intherow.logiikka;
 
 import com.intherow.ui.Piirtaja;
@@ -29,8 +24,14 @@ public class UserPelaaja implements Pelaaja {
         this.id = id;
         this.lukija = lukija;
         voitot = 0;
+        //this.vastustajanMerkki = null;
     }
 
+    /**
+     * Metodi lisää pelaajan haluaman merkin peliin
+     *
+     * @param piirtaja hakee alustan mihin laittaa merkin
+     */
     public void laitaMerkki(Piirtaja piirtaja) {
         System.out.print(nimi + "\nMihin laitetaan merkki? ");
         int pylvas;
@@ -53,8 +54,20 @@ public class UserPelaaja implements Pelaaja {
         }
     }
 
+    /**
+     * Metodi lisää vastustajan merkin
+     *
+     * @param merkki asettaa vastustajan merkin jotta piirtäminen onnistuu
+     */
     public void asetaVastustajanMerkki(String merkki) {
         vastustajanMerkki = merkki;
+    }
+
+    /**
+     * Lisää pelaajan voittojen määrää
+     */
+    public void voitti() {
+        voitot++;
     }
 
     public String getNimi() {
@@ -69,10 +82,6 @@ public class UserPelaaja implements Pelaaja {
         return vastustajanMerkki;
     }
 
-    public void voitti() {
-        voitot++;
-    }
-
     public int getVoitot() {
         return voitot;
     }
@@ -81,8 +90,7 @@ public class UserPelaaja implements Pelaaja {
     public Piirtaja getPiirtaja() {
         return piirtaja;
     }
-    
-    
+
     @Override
     public String toString() {
         if (vastustajanMerkki != null) {
