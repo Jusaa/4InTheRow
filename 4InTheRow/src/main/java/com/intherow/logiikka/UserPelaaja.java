@@ -16,6 +16,7 @@ public class UserPelaaja implements Pelaaja {
     private String vastustajanMerkki;
     private Piirtaja piirtaja;
     private int voitot;
+    private boolean omaVuoro;
 
     public UserPelaaja(String nimi, String pelaajanMerkki, Piirtaja piirtaja, Scanner lukija, int id) {
         this.nimi = nimi;
@@ -24,7 +25,12 @@ public class UserPelaaja implements Pelaaja {
         this.id = id;
         this.lukija = lukija;
         voitot = 0;
-        //this.vastustajanMerkki = null;
+        this.vastustajanMerkki = null;
+        if(id == 1){
+            omaVuoro = true;
+        }else{
+            omaVuoro = false;
+        }
     }
 
     /**
@@ -43,7 +49,7 @@ public class UserPelaaja implements Pelaaja {
             }
 
             if (pylvas >= 1 && pylvas <= 7) {
-                if (piirtaja.vuoronPiirto(pylvas, pelaajanMerkki, vastustajanMerkki, id) == true) {
+                if (piirtaja.vuoronPiirto(pylvas, id) == true) {
                     break;
                 } else {
                     System.out.print("Valitsemasi pylväs on täynnä, valitse toinen: ");
@@ -90,6 +96,21 @@ public class UserPelaaja implements Pelaaja {
     public Piirtaja getPiirtaja() {
         return piirtaja;
     }
+    
+    public Scanner getScanner() {
+        return lukija;
+    }
+    
+    @Override
+    public boolean omaVuoro() {
+        if(omaVuoro){
+            omaVuoro = false;
+            return true;
+        }else{
+            omaVuoro = true;
+            return false;
+        }
+    }
 
     @Override
     public String toString() {
@@ -98,5 +119,7 @@ public class UserPelaaja implements Pelaaja {
         }
         return nimi + ", oma merkki " + pelaajanMerkki;
     }
+
+    
 
 }

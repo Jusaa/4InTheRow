@@ -57,32 +57,21 @@ public class Piirtaja {
      */
     public void uusiPeli() throws IOException {
 
-        database.uusiLista();
-        alusta.getContentPane().removeAll();
-
-        for (int i = 1; i < 8; i++) {
-            alusta.getContentPane().add(new JButton("" + i));
-            alusta.getContentPane().getComponent(i - 1).addMouseListener(new HiirenKuuntelija(i, this));
-        }
         for (int i = 0; i < 42; i++) {
             alusta.getContentPane().add(new JLabel(tyhjaruutu));
         }
-        alusta.pack();
-        alusta.setVisible(true);
     }
 
     /**
      * Metodi lisää pelikentälle uuden merkin
      *
      * @param pylvas mihin pylvääseen merkki laitetaan
-     * @param merkki pelaajan oma merkki
-     * @param merkki2 vastustajan merkki
      * @param id pelaajan oma id arvo
-     * @return lisättiinkö uusi merkki vai ei
+     * @return the boolean
      */
-    public boolean vuoronPiirto(int pylvas, String merkki, String merkki2, int id) {
+    public boolean vuoronPiirto(int pylvas, int id) {
 
-        if (database.lisaaListaan(pylvas, merkki, merkki2, id) == false) {
+        if (database.lisaaListaan(pylvas, id) == false) {
             return false;
         } else {
             int ruutuId = 0;
@@ -90,9 +79,9 @@ public class Piirtaja {
             for (int i = nro; i > 0; i--) {
                 for (int ii = 0; ii < 7; ii++) {
                     if (database.getLista().get(ii).get(nro - 1) == 1 && id == 1) {
-                        ruudunMuokkaus(ruutuId + 7, id);
+                        ruudunMuokkaus(ruutuId + 7, 1);
                     } else if (database.getLista().get(ii).get(nro - 1) == 2 && id == 2) {
-                        ruudunMuokkaus(ruutuId + 7, id);
+                        ruudunMuokkaus(ruutuId + 7, 2);
                     }
 
                     ruutuId++;
@@ -112,6 +101,15 @@ public class Piirtaja {
      * @return valinta miten jatketaan peliä
      */
     public int menuPiirto(Scanner lukija) {
+        
+        alusta.getContentPane().removeAll();
+        alusta.add(new JButton("1"));
+        alusta.pack();
+        alusta.setVisible(true);
+        
+        
+        
+        
         while (true) {
             System.out.println("\n[1] Uusi yksinpeli\n[2] Uusi kaksinpeli\n[3] Uusi peli samoilla tiedoilla\n[4] Lopeta");
             String komento = lukija.nextLine();
@@ -142,6 +140,23 @@ public class Piirtaja {
         }
 
     }
+
+//    public void tuloksenPiirto() {
+//        if (playertwo.getClass().equals(playerone.getClass())) {
+//            System.out.println("DINGDINGDING\nPELAAAJA " + tarkistusnro + " VOITTI!");
+//            System.out.println("Pelaaja 1 voitot: " + playerone.getVoitot() + "\nPelaaja 2 voitot: " + playertwo.getVoitot());
+//        } else {
+//            if (tarkistusnro == 1) {
+//                System.out.println("DINGDINGDING\nVOITIT PELIN");
+//            } else {
+//                System.out.println("DINGDINGDING\nHÄVISIT PELIN");
+//            }
+//            System.out.println("Pelaaja 1 voitot: " + playerone.getVoitot() + "\nTietokoneen voitot: " + playertwo.getVoitot());
+//        }
+//
+//        tarkistusnro = 0;
+//        aloita();
+//    }
 
     public Tietokanta getDatabase() {
         return database;

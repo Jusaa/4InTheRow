@@ -1,6 +1,7 @@
 package com.intherow.logiikka;
 
 import com.intherow.ui.Piirtaja;
+import java.util.Scanner;
 
 /**
  *
@@ -23,4 +24,8 @@ public interface Pelaaja {
     public int getVoitot();
 
     public Piirtaja getPiirtaja();
+    
+    public Scanner getScanner();
+    
+    public boolean omaVuoro();
 }

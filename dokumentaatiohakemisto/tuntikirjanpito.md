@@ -19,3 +19,5 @@ Viikko 4||
 27.09.2016 | 2h | Swingin tutkiskelua ja prototyyppi graafisesta käyttöliittymästä
 29.09.2016 | 4h | Grafiikkaliittymän edistämistä 
 30.09.2016 | 2h | Javadoc, testit
+Viikko 5||
+04.10.2016 | 5h | Grafiikkaliittymän edistämistä + ongelmia githubin kanssa

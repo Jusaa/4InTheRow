@@ -2,6 +2,7 @@ package com.intherow.logiikka;
 
 import com.intherow.ui.Piirtaja;
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  *
@@ -16,6 +17,7 @@ public class CPUPelaaja implements Pelaaja {
     private String vastustajanMerkki;
     private Piirtaja piirtaja;
     private int voitot;
+    private boolean omaVuoro;
 
     public CPUPelaaja(String nimi, String pelaajanMerkki, Piirtaja piirtaja, int id) {
         this.nimi = nimi;
@@ -24,7 +26,12 @@ public class CPUPelaaja implements Pelaaja {
         this.id = id;
         voitot = 0;
         random = new Random();
-        //this.vastustajanMerkki = null;
+        this.vastustajanMerkki = null;
+        if(id == 1){
+            omaVuoro = true;
+        }else{
+            omaVuoro = false;
+        }
     }
 
     /**
@@ -36,7 +43,7 @@ public class CPUPelaaja implements Pelaaja {
         //Graafiseen liittymään siirtymisen jälkeen tämän parantaminen
         while (true) {
             int pylvas = random.nextInt(6) + 1;
-            if (piirtaja.vuoronPiirto(pylvas, pelaajanMerkki, vastustajanMerkki, id) == true) {
+            if (piirtaja.vuoronPiirto(pylvas, id) == true) {
                 break;
             }
         }
@@ -78,6 +85,17 @@ public class CPUPelaaja implements Pelaaja {
     public Piirtaja getPiirtaja() {
         return piirtaja;
     }
+    
+    @Override
+    public boolean omaVuoro() {
+        if(omaVuoro){
+            omaVuoro = false;
+            return true;
+        }else{
+            omaVuoro = true;
+            return false;
+        }
+    }
 
     @Override
     public String toString() {
@@ -86,5 +104,12 @@ public class CPUPelaaja implements Pelaaja {
         }
         return nimi + ", oma merkki " + pelaajanMerkki;
     }
+
+    @Override
+    public Scanner getScanner() {
+        return null;
+    }
+
+    
 
 }

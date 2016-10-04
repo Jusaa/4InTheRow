@@ -4,6 +4,8 @@ import com.intherow.ui.Piirtaja;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 
 /**
  *
@@ -15,6 +17,7 @@ public class Peli {
     private Pelaaja playerone;
     private Pelaaja playertwo;
     private Piirtaja piirtaja;
+    private int pelaajanvuoro;
     private int tarkistusnro;
     private VoitonTarkistaja voitonTarkistaja;
 
@@ -28,6 +31,17 @@ public class Peli {
         playerone.asetaVastustajanMerkki("O");
         playertwo.asetaVastustajanMerkki("X");
         voitonTarkistaja = new VoitonTarkistaja();
+        pelaajanvuoro = 1;
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    
+                }
+            }
+        }).start();
+        
     }
 
     /**
@@ -35,6 +49,8 @@ public class Peli {
      */
     public void aloita() {
         voitonTarkistaja = new VoitonTarkistaja();
+        piirtaja.getAlusta().getContentPane().removeAll();
+        piirtaja.getAlusta().getContentPane().add(new JButton("1")).addMouseListener(new HiirenKuuntelija(11, this));
         int valinta = piirtaja.menuPiirto(lukija);
         if (valinta == 1) {
             aloitaYksinPeli();
@@ -42,7 +58,7 @@ public class Peli {
             aloitaKaksinPeli();
         } else if (valinta == 3) {
             run();
-        } 
+        }
     }
 
     /**
@@ -98,40 +114,56 @@ public class Peli {
 
         tarkistusnro = 0;
         try {
+
             piirtaja.uusiPeli();
+
+            piirtaja.getDatabase().uusiLista();
+            piirtaja.getAlusta().getContentPane().removeAll();
+
+            for (int i = 1; i < 8; i++) {
+                piirtaja.getAlusta().getContentPane().add(new JButton("" + i));
+                piirtaja.getAlusta().getContentPane().getComponent(i - 1).addMouseListener(new HiirenKuuntelija(i, this));
+            }
+
+            piirtaja.uusiPeli();
+
+            piirtaja.getAlusta().pack();
+            piirtaja.getAlusta().setVisible(true);
+
         } catch (IOException ex) {
 
         }
-        while (true) {
-            playerone.laitaMerkki(piirtaja);
-            tarkistusnro = voitonTarkistaja.tarkasta(1, piirtaja);
-            if (tarkistusnro != 0) {
-                playerone.voitti();
-                break;
-            }
 
-            playertwo.laitaMerkki(piirtaja);
-            tarkistusnro = voitonTarkistaja.tarkasta(2, piirtaja);
-            if (tarkistusnro != 0) {
-                playertwo.voitti();
-                break;
-            }
-        }
-        if (playertwo.getClass().equals(playerone.getClass())) {
-            System.out.println("DINGDINGDING\nPELAAAJA " + tarkistusnro + " VOITTI!");
-            System.out.println("Pelaaja 1 voitot: " + playerone.getVoitot() + "\nPelaaja 2 voitot: " + playertwo.getVoitot());
-        } else {
-            if (tarkistusnro == 1) {
-                System.out.println("DINGDINGDING\nVOITIT PELIN");
-            } else {
-                System.out.println("DINGDINGDING\nHÄVISIT PELIN");
-            }
-            System.out.println("Pelaaja 1 voitot: " + playerone.getVoitot() + "\nTietokoneen voitot: " + playertwo.getVoitot());
-        }
-
-        tarkistusnro = 0;
-        aloita();
-
+//        while (true) {
+//            playerone.laitaMerkki(piirtaja);
+//            tarkistusnro = voitonTarkistaja.tarkasta(1, piirtaja);
+//            if (tarkistusnro != 0) {
+//                playerone.voitti();
+//                break;
+//            }
+//
+//            playertwo.laitaMerkki(piirtaja);
+//            tarkistusnro = voitonTarkistaja.tarkasta(2, piirtaja);
+//            if (tarkistusnro != 0) {
+//                playertwo.voitti();
+//                break;
+//            }
+//        }
+//        
+//        if (playertwo.getClass().equals(playerone.getClass())) {
+//            System.out.println("DINGDINGDING\nPELAAAJA " + tarkistusnro + " VOITTI!");
+//            System.out.println("Pelaaja 1 voitot: " + playerone.getVoitot() + "\nPelaaja 2 voitot: " + playertwo.getVoitot());
+//        } else {
+//            if (tarkistusnro == 1) {
+//                System.out.println("DINGDINGDING\nVOITIT PELIN");
+//            } else {
+//                System.out.println("DINGDINGDING\nHÄVISIT PELIN");
+//            }
+//            System.out.println("Pelaaja 1 voitot: " + playerone.getVoitot() + "\nTietokoneen voitot: " + playertwo.getVoitot());
+//        }
+//
+//        tarkistusnro = 0;
+//        aloita();
     }
 
     public ArrayList<ArrayList<Integer>> getLista() {
@@ -152,6 +184,18 @@ public class Peli {
 
     public Piirtaja getPiirtaja() {
         return piirtaja;
+    }
+
+    public int getPelaajanVuoro() {
+        return pelaajanvuoro;
+    }
+
+    public void setPelaajanVuoro() {
+        if (pelaajanvuoro == 2) {
+            pelaajanvuoro = 1;
+        } else {
+            pelaajanvuoro = 2;
+        }
     }
 
     public VoitonTarkistaja getVoitonTarkistaja() {

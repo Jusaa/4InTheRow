@@ -31,14 +31,11 @@ public class Tietokanta {
 
     /**
      * Lisää tietokannan listaan merkin oikeaan paikkaan
-     *
      * @param pylvas mihin pylvääseen merkki laitetaan
-     * @param merkki pelaajan oma merkki
-     * @param merkki2 vastustajan merkki
      * @param id pelaajan oma id arvo
-     * @return lisättiinkö uusi merkki vai ei
+     * @return the boolean
      */
-    public boolean lisaaListaan(int pylvas, String merkki, String merkki2, int id) {
+    public boolean lisaaListaan(int pylvas, int id) {
         if (lista.get(pylvas - 1).get(5) != 0) {
             return false;
         } else {
