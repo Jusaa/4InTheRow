@@ -18,6 +18,6 @@ tavoite saada 4 merkkiä putkeen tiputtamalla eri sarakkeisiin
 
 #### [Luokkakaavio](https://github.com/Jusaa/4InTheRow/blob/master/dokumentaatiohakemisto/luokkakaavio.png)
 
-#### [Sekvenssiokaavio (Eri tapauksia merkin laittamisesta)](https://github.com/Jusaa/4InTheRow/blob/master/dokumentaatiohakemisto/sekvenssikaavio.png)
+#### [Sekvenssikaavio (Eri tapauksia merkin laittamisesta)](https://github.com/Jusaa/4InTheRow/blob/master/dokumentaatiohakemisto/sekvenssiokaavio.png)
 
 
