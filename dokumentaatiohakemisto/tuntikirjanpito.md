@@ -20,11 +20,7 @@ Viikko 4||
 29.09.2016 | 4h | Grafiikkaliittymän edistämistä 
 30.09.2016 | 2h | Javadoc, testit
 Viikko 5||
-<<<<<<< HEAD
 03.10.2016 | 2h | Koodin siistimistä ja grafiikan pohtimista
 04.10.2016 | 3h | Grafiikkaliittymän edistämistä + ongelmia githubin kanssa
 06.10.2016 | 3h | Grafiikan lisäämistä (vihdoinkin iso tyhmä bugi korjattu)
 07.10.2016 | 5h | Kaaviot, muiden muotoseikkojen päivitys, koodin siistimistä ja pientä edistystä
-=======
-04.10.2016 | 5h | Grafiikkaliittymän edistämistä + ongelmia githubin kanssa
->>>>>>> refs/remotes/origin/master
