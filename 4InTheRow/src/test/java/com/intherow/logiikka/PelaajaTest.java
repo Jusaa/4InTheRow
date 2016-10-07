@@ -36,8 +36,8 @@ public class PelaajaTest {
 
     @Before
     public void setUp() {
-        playerone = new UserPelaaja("playerone", "X", new Piirtaja(), new Scanner(System.in), 1);
-        cpuplayer = new CPUPelaaja("cpuplayer", "O", new Piirtaja(), 2);
+        playerone = new IhmisPelaaja(new Piirtaja(new Peli()), 1);
+        cpuplayer = new TietokonePelaaja(new Piirtaja(new Peli()), 2);
     }
 
     @After
@@ -46,36 +46,12 @@ public class PelaajaTest {
 
     @Test
     public void uudenPelaajanTiedotOikein() {
-
-        assertEquals(playerone.getNimi(), "playerone");
-        assertEquals(playerone.getOmaMerkki(), "X");
-        assertEquals("playerone, oma merkki X", playerone.toString());
-    }
-
-    @Test
-    public void vastustajanMerkkiOikein() {
-        playerone.asetaVastustajanMerkki("O");
-
-        assertEquals(playerone.getVastustajanMerkki(), "O");
-        assertEquals("playerone, oma merkki X, vastustajan merkki O", playerone.toString());
-    }
-
-    @Test
-    public void vastustajanMerkkiOikein2() {
-        cpuplayer.asetaVastustajanMerkki("X");
-
-        assertEquals(cpuplayer.getVastustajanMerkki(), "X");
-        assertEquals("cpuplayer, oma merkki O, vastustajan merkki X", cpuplayer.toString());
+        assertEquals(playerone.getId(), 1);
     }
 
     @Test
     public void uudenCPUPelaajanTiedotOikein() {
-
-        cpuplayer.asetaVastustajanMerkki("X");
-
-        assertEquals(cpuplayer.getNimi(), "cpuplayer");
-        assertEquals(cpuplayer.getOmaMerkki(), "O");
-        assertEquals(cpuplayer.getVastustajanMerkki(), "X");
+        assertEquals(cpuplayer.getId(), 2);
     }
 
     @Test
@@ -98,5 +74,11 @@ public class PelaajaTest {
         cpuplayer.voitti();
         cpuplayer.voitti();
         assertEquals(cpuplayer.getVoitot(), 4);
+    }
+
+    @Test
+    public void piirtajanHaku() {
+        assertEquals(playerone.getPiirtaja().getTietokanta().getLista().toString(), "[[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], "
+                + "[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0]]");
     }
 }

@@ -2,23 +2,21 @@ package com.intherow.logiikka;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author Jusaa
- */
 public class Tietokanta {
 
     private ArrayList<ArrayList<Integer>> lista;
 
+    /**
+     * Konstruktori tietokannalle.
+     */
     public Tietokanta() {
-
+        lista = new ArrayList<>();
     }
 
     /**
-     * Alustaa uuden listan uutta peliä varten
+     * Alustaa uuden listan uutta peliä varten.
      */
     public void uusiLista() {
-        lista = new ArrayList<>();
         ArrayList<Integer> sisaLista;
         for (int i = 7; i > 0; i--) {
             sisaLista = new ArrayList<>();
@@ -30,15 +28,12 @@ public class Tietokanta {
     }
 
     /**
-     * Lisää tietokannan listaan merkin oikeaan paikkaan
-     *
+     * Lisää tietokannan listaan merkin oikeaan paikkaan.
      * @param pylvas mihin pylvääseen merkki laitetaan
-     * @param merkki pelaajan oma merkki
-     * @param merkki2 vastustajan merkki
      * @param id pelaajan oma id arvo
-     * @return lisättiinkö uusi merkki vai ei
+     * @return the boolean
      */
-    public boolean lisaaListaan(int pylvas, String merkki, String merkki2, int id) {
+    public boolean lisaaListaan(int pylvas, int id) {
         if (lista.get(pylvas - 1).get(5) != 0) {
             return false;
         } else {
@@ -58,9 +53,5 @@ public class Tietokanta {
 
     public ArrayList<ArrayList<Integer>> getLista() {
         return lista;
-    }
-
-    public String toString() {
-        return lista.toString();
     }
 }

@@ -1,26 +1,25 @@
 package com.intherow.logiikka;
 
 import com.intherow.ui.Piirtaja;
+import java.util.Scanner;
 
-/**
- *
- * @author Jusaa
- */
 public interface Pelaaja {
 
-    public void laitaMerkki(Piirtaja piirtaja);
+    /**
+     * Metodi lisää pelaajan haluaman merkin peliin.
+     * @param piirtaja hakee alustan mihin laittaa merkin
+     * @param pylvas kertoo mihin pylvaaseen merkki laitetaan
+     */
+    public void laitaMerkki(Piirtaja piirtaja, int pylvas);
 
-    public String getNimi();
-
-    public String getOmaMerkki();
-
-    public String getVastustajanMerkki();
-
-    public void asetaVastustajanMerkki(String o);
-
+    /**
+     * Lisää pelaajan voittojen määrää.
+     */
     public void voitti();
 
     public int getVoitot();
+    
+    public int getId();
 
     public Piirtaja getPiirtaja();
 }

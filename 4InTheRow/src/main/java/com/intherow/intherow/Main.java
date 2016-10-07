@@ -7,15 +7,24 @@ package com.intherow.intherow;
 
 import com.intherow.logiikka.Peli;
 
-/**
- *
- * @author Jusaa
- */
 public class Main {
-
+    
+    /**
+     * Peli käynnistyy.
+     * @param args koska main metodi
+     */
     public static void main(String[] args) {
         Peli peli = new Peli();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    continue;
+                }
+            }
+        }).start();
         peli.aloita();
-
+        
+        
     }
 }

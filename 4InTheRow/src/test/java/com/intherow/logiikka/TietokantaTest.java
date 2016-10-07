@@ -44,48 +44,48 @@ public class TietokantaTest {
     @Test
     public void listanOikeinGenerointi() {
         assertEquals("[[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], "
-                + "[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0]]", tietokanta.toString());
+                + "[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0]]", tietokanta.getLista().toString());
     }
 
     @Test
     public void listanMuokkausKerran() {
-        tietokanta.lisaaListaan(7, "X", "O", 1);
+        tietokanta.lisaaListaan(7, 1);
         assertEquals("[[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], "
-                + "[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0]]", tietokanta.toString());
+                + "[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0]]", tietokanta.getLista().toString());
     }
 
     @Test
     public void listanMuokkausMontaKertaa() {
-        tietokanta.lisaaListaan(1, "X", "O", 1);
-        tietokanta.lisaaListaan(1, "X", "O", 1);
-        tietokanta.lisaaListaan(2, "X", "O", 1);
-        tietokanta.lisaaListaan(3, "X", "O", 1);
-        tietokanta.lisaaListaan(1, "X", "O", 1);
+        tietokanta.lisaaListaan(1, 1);
+        tietokanta.lisaaListaan(1, 1);
+        tietokanta.lisaaListaan(2, 1);
+        tietokanta.lisaaListaan(3, 1);
+        tietokanta.lisaaListaan(1, 1);
         assertEquals("[[1, 1, 1, 0, 0, 0], [1, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], "
-                + "[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0]]", tietokanta.toString());
+                + "[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0]]", tietokanta.getLista().toString());
     }
 
     @Test
     public void listanMuokkausMolemmillaPelaajilla() {
-        tietokanta.lisaaListaan(1, "X", "O", 1);
-        tietokanta.lisaaListaan(1, "X", "O", 2);
-        tietokanta.lisaaListaan(2, "X", "O", 2);
-        tietokanta.lisaaListaan(2, "X", "O", 1);
-        tietokanta.lisaaListaan(3, "X", "O", 2);
+        tietokanta.lisaaListaan(1, 1);
+        tietokanta.lisaaListaan(1, 2);
+        tietokanta.lisaaListaan(2, 2);
+        tietokanta.lisaaListaan(2, 1);
+        tietokanta.lisaaListaan(3, 2);
         assertEquals("[[1, 2, 0, 0, 0, 0], [2, 1, 0, 0, 0, 0], [2, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], "
-                + "[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0]]", tietokanta.toString());
+                + "[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0]]", tietokanta.getLista().toString());
     }
 
     @Test
     public void liianPaljonMerkkejaYhteenSarakkeeseen() {
-        tietokanta.lisaaListaan(1, "X", "O", 1);
-        tietokanta.lisaaListaan(1, "X", "O", 1);
-        tietokanta.lisaaListaan(1, "X", "O", 1);
-        tietokanta.lisaaListaan(1, "X", "O", 1);
-        tietokanta.lisaaListaan(1, "X", "O", 1);
-        tietokanta.lisaaListaan(1, "X", "O", 1);
-        tietokanta.lisaaListaan(1, "X", "O", 1);
+        tietokanta.lisaaListaan(1, 1);
+        tietokanta.lisaaListaan(1, 1);
+        tietokanta.lisaaListaan(1, 1);
+        tietokanta.lisaaListaan(1, 1);
+        tietokanta.lisaaListaan(1, 1);
+        tietokanta.lisaaListaan(1, 1);
+        tietokanta.lisaaListaan(1, 1);
         assertEquals("[[1, 1, 1, 1, 1, 1], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], "
-                + "[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0]]", tietokanta.toString());
+                + "[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0]]", tietokanta.getLista().toString());
     }
 }

@@ -1,4 +1,4 @@
-### Aihe:
+﻿### Aihe:
 Toteutetaan peli 4InTheRow,
 tavoite saada 4 merkkiä putkeen tiputtamalla eri sarakkeisiin
 
@@ -9,14 +9,15 @@ tavoite saada 4 merkkiä putkeen tiputtamalla eri sarakkeisiin
 ##### Aloitusliittymä:
 - Pelimuodon valinta, PvP vai PvCOM
 - COM pelaajan taitotason valinta
-- EHKÄ Pelialustan koon valinta
 
 ##### Itse peli:
 - Sarakkeen valitseminen mihin pudottaa merkin
+- Voittojen näyttäminen ja laskeminen
 - Uusi peli painike
 
 
 #### [Luokkakaavio](https://github.com/Jusaa/4InTheRow/blob/master/dokumentaatiohakemisto/luokkakaavio.png)
 
+#### [Sekvenssiokaavio (Eri tapauksia merkin laittamisesta)](https://github.com/Jusaa/4InTheRow/blob/master/dokumentaatiohakemisto/sekvenssikaavio.png)
 
 

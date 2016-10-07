@@ -1,27 +1,41 @@
 package com.intherow.logiikka;
 
-import com.intherow.ui.Piirtaja;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-/**
- *
- * @author Jusaa
- */
 public class HiirenKuuntelija implements MouseListener {
 
     private int pylvas;
-    private Piirtaja piirtaja;
+    private Peli peli;
 
-    public HiirenKuuntelija(int i, Piirtaja piirtaja) {
-        this.pylvas = i;
-        this.piirtaja = piirtaja;
+    /**
+     * Konstruktori hiirenkuuntelijalle.
+     * @param pylvas kertoo mihin pylvaaseen tai numeroon kuuntelija liittyy
+     * @param peli kertoo pelin tiedot kuuntelijalle
+     */
+    public HiirenKuuntelija(int pylvas, Peli peli) {
+        this.pylvas = pylvas;
+        this.peli = peli;
 
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        piirtaja.vuoronPiirto(pylvas, "X", "O", 1);
+        if (pylvas < 8) {
+            peli.vuoro(pylvas);
+        } else {
+            if (pylvas == 11) {
+                peli.aloitaYksinPeli();
+            } else if (pylvas == 12) {
+                peli.aloitaKaksinPeli();
+            } else if (pylvas == 13) {
+                peli.run();
+            } else if (pylvas == 20) {
+                peli.aloitaUudestaan();
+            }
+
+        }
+
     }
 
     @Override

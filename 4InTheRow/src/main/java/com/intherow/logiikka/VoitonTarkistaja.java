@@ -2,22 +2,20 @@ package com.intherow.logiikka;
 
 import com.intherow.ui.Piirtaja;
 
-/**
- *
- * @author Jusaa
- */
 public class VoitonTarkistaja {
 
     private int tarkistusnro;
     private Piirtaja piirtaja;
 
+    /**
+     * Konstruktori voitontarkastajalle.
+     */
     public VoitonTarkistaja() {
         tarkistusnro = 0;
     }
 
     /**
-     * Metodi tarkastaa onko pelaaja voittanut
-     *
+     * Metodi tarkastaa onko pelaaja voittanut.
      * @param nro pelaajan id numero kumpi laittoi viime merkin
      * @param piirtaja piirtaja jossa pelikenttä tallessa
      * @return tarkistusnumero, joka kertoo tarkastuksen tuloksen
@@ -50,7 +48,7 @@ public class VoitonTarkistaja {
         if (tarkistusnro == 0) {
             int apunumero = 0;
             for (int i = 0; i < 7; i++) {
-                if (!piirtaja.getDatabase().getLista().get(i).contains(0)) {
+                if (!piirtaja.getTietokanta().getLista().get(i).contains(0)) {
                     apunumero++;
                 }
                 if (apunumero == 7) {
@@ -64,8 +62,7 @@ public class VoitonTarkistaja {
     }
 
     /**
-     * Metodi asettaa tarkistusnumeron pelaajan id'ksi jos tämä on voittanut
-     *
+     * Metodi asettaa tarkistusnumeron pelaajan id'ksi jos tämä on voittanut.
      * @param nro pelaajan id numero
      * @param voitto tarkastus String joka kertoo voittiko pelaaja
      */
@@ -76,8 +73,7 @@ public class VoitonTarkistaja {
     }
 
     /**
-     * Metodi tarkastaa vinorivit Oikealta Ylös
-     *
+     * Metodi tarkastaa vinorivit Oikealta Ylös.
      * @param nro pelaajan id numero
      * @param maara kuinka monta kohtaa vinorivissä
      * @param getOffset säätää aloituspaikkaa
@@ -86,13 +82,13 @@ public class VoitonTarkistaja {
         String voitto = "";
         for (int i = 0; i < maara; i++) {
             if (getOffset < 0) {
-                if (piirtaja.getDatabase().getLista().get(i - getOffset).get(i) == nro) {
+                if (piirtaja.getTietokanta().getLista().get(i - getOffset).get(i) == nro) {
                     voitto = voitto + "1";
                 } else {
                     voitto = "";
                 }
             } else {
-                if (piirtaja.getDatabase().getLista().get(i).get(i + getOffset) == nro) {
+                if (piirtaja.getTietokanta().getLista().get(i).get(i + getOffset) == nro) {
                     voitto = voitto + "1";
                 } else {
                     voitto = "";
@@ -104,8 +100,7 @@ public class VoitonTarkistaja {
     }
 
     /**
-     * Metodi tarkastaa vinorivit Oikealta Alas
-     *
+     * Metodi tarkastaa vinorivit Oikealta Alas.
      * @param nro pelaajan id numero
      * @param maara kuinka monta kohtaa vinorivissä
      * @param laskeva aloituspaikan määritys
@@ -115,7 +110,7 @@ public class VoitonTarkistaja {
         String voitto = "";
         int ii = laskeva;
         for (int i = nouseva; i < maara + nouseva; i++) {
-            if (piirtaja.getDatabase().getLista().get(i).get(ii) == nro) {
+            if (piirtaja.getTietokanta().getLista().get(i).get(ii) == nro) {
                 voitto = voitto + "1";
             } else {
                 voitto = "";
@@ -126,8 +121,7 @@ public class VoitonTarkistaja {
     }
 
     /**
-     * Metodi tarkastaa voiton vaakariveiltä
-     *
+     * Metodi tarkastaa voiton vaakariveiltä.
      * @param nro pelaajan id numero
      */
     public void vaakaTarkistus(int nro) {
@@ -135,7 +129,7 @@ public class VoitonTarkistaja {
         for (int i = 0; i < 6; i++) {
             voitto = "";
             for (int ii = 0; ii < 7; ii++) {
-                if (piirtaja.getDatabase().getLista().get(ii).get(i) == nro) {
+                if (piirtaja.getTietokanta().getLista().get(ii).get(i) == nro) {
                     voitto = voitto + "1";
                 } else {
                     voitto = "";
@@ -146,8 +140,7 @@ public class VoitonTarkistaja {
     }
 
     /**
-     * Metodi tarkastaa voiton pystyriveiltä
-     *
+     * Metodi tarkastaa voiton pystyriveiltä.
      * @param nro pelaajan id numero
      */
     public void pystyTarkistus(int nro) {
@@ -155,7 +148,7 @@ public class VoitonTarkistaja {
         for (int i = 6; i >= 0; i--) {
             voitto = "";
             for (int ii = 0; ii < 6; ii++) {
-                if (piirtaja.getDatabase().getLista().get(i).get(ii) == nro) {
+                if (piirtaja.getTietokanta().getLista().get(i).get(ii) == nro) {
                     voitto = voitto + "1";
                 } else {
                     voitto = "";

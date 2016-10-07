@@ -35,7 +35,8 @@ public class PeliTest {
     @Before
     public void setUp() {
         peli = new Peli();
-        peli.getPiirtaja().getDatabase().uusiLista();
+        peli.getPiirtaja().getTietokanta().uusiLista();
+        peli.setPelaajat(new IhmisPelaaja(peli.getPiirtaja(), 1), new TietokonePelaaja(peli.getPiirtaja(), 2));
     }
 
     @After
@@ -48,290 +49,300 @@ public class PeliTest {
     }
 
     @Test
-    public void pelaajatOikein() {
+    public void pelaajienLoytaminen() {
+        assertEquals(peli.getPelaajaYksi().toString(), new IhmisPelaaja(peli.getPiirtaja(), 1).toString());
+        assertEquals(peli.getPelaajaKaksi().toString(), new TietokonePelaaja(peli.getPiirtaja(), 2).toString());
+        assertEquals(peli.getPelaajaYksi().toString(), "1 0");
+        assertEquals(peli.getPelaajaKaksi().toString(), "2 0");
+    }
 
-        assertEquals(peli.getPlayerOne().toString(), "playerone, oma merkki X, vastustajan merkki O");
-        assertEquals(peli.getPlayerTwo().toString(), "playertwo, oma merkki O, vastustajan merkki X");
+    @Test
+    public void vuoronMuuttaminenToimii() {
+        assertEquals(peli.getPelaajanVuoro(), 1);
+        peli.setPelaajanVuoro();
+        assertEquals(peli.getPelaajanVuoro(), 2);
+        peli.setPelaajanVuoro();
+        assertEquals(peli.getPelaajanVuoro(), 1);
     }
 
     @Test
     public void vaakaTarkistusToimii() {
-        peli.getPiirtaja().getDatabase().lisaaListaan(1, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(2, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(3, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "X", "O", 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(1, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(2, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 1);
         assertEquals(peli.getVoitonTarkistaja().tarkasta(1, peli.getPiirtaja()), 1);
     }
 
     @Test
     public void pystyTarkistusToimii() {
-        peli.getPiirtaja().getDatabase().lisaaListaan(3, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(3, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(3, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(3, "X", "O", 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 1);
         assertEquals(peli.getVoitonTarkistaja().tarkasta(1, peli.getPiirtaja()), 1);
     }
 
     @Test
     public void vinoTarkistusToimiiOY() {
-        peli.getPiirtaja().getDatabase().lisaaListaan(3, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(5, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(5, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(7, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(6, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(6, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(5, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(6, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(6, "X", "O", 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(7, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(6, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(6, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(6, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(6, 1);
         assertEquals(peli.getVoitonTarkistaja().tarkasta(1, peli.getPiirtaja()), 1);
     }
 
     @Test
     public void vinoTarkistusToimiiOY2() {
-        peli.getPiirtaja().getDatabase().lisaaListaan(2, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(3, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(3, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(6, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(5, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(5, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(5, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(5, "X", "O", 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(2, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(6, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 1);
         assertEquals(peli.getVoitonTarkistaja().tarkasta(1, peli.getPiirtaja()), 1);
     }
 
     @Test
     public void vinoTarkistusToimiiOY3() {
-        peli.getPiirtaja().getDatabase().lisaaListaan(1, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(2, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(2, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(3, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(3, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(5, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(3, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "X", "O", 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(1, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(2, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(2, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 1);
         assertEquals(peli.getVoitonTarkistaja().tarkasta(1, peli.getPiirtaja()), 1);
     }
 
     @Test
     public void vinoTarkistusToimiiOY4() {
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(5, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(5, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(6, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(6, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(1, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(7, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(7, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(6, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(7, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(7, "X", "O", 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(6, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(6, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(1, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(7, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(7, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(6, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(7, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(7, 1);
         assertEquals(peli.getVoitonTarkistaja().tarkasta(1, peli.getPiirtaja()), 1);
     }
 
     @Test
     public void vinoTarkistusToimiiOY5() {
-        peli.getPiirtaja().getDatabase().lisaaListaan(1, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(2, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(1, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(1, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(3, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(2, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(2, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(3, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(3, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(3, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "X", "O", 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(1, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(2, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(1, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(1, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(2, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(2, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 1);
         assertEquals(peli.getVoitonTarkistaja().tarkasta(1, peli.getPiirtaja()), 1);
     }
 
     @Test
     public void vinoTarkistusToimiiOY6() {
-        peli.getPiirtaja().getDatabase().lisaaListaan(1, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(2, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(3, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(1, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(2, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(1, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(1, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(3, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(2, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(2, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(3, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(3, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(3, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "X", "O", 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(1, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(2, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(1, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(2, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(1, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(1, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(2, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(2, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 1);
         assertEquals(peli.getVoitonTarkistaja().tarkasta(1, peli.getPiirtaja()), 1);
     }
 
     @Test
     public void vinoTarkistusToimiiOA() {
-        peli.getPiirtaja().getDatabase().lisaaListaan(3, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(2, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(3, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(2, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(2, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(1, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(1, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(1, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(1, "O", "X", 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(2, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(2, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(2, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(1, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(1, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(1, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(1, 2);
         assertEquals(peli.getVoitonTarkistaja().tarkasta(2, peli.getPiirtaja()), 2);
     }
 
     @Test
     public void vinoTarkistusToimiiOA2() {
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(5, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(3, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(3, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(3, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(2, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(2, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(2, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(2, "O", "X", 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(2, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(2, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(2, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(2, 2);
         assertEquals(peli.getVoitonTarkistaja().tarkasta(2, peli.getPiirtaja()), 2);
     }
 
     @Test
     public void vinoTarkistusToimiiOA3() {
-        peli.getPiirtaja().getDatabase().lisaaListaan(5, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(6, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(5, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(3, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(3, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(3, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(3, "O", "X", 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(6, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 2);
         assertEquals(peli.getVoitonTarkistaja().tarkasta(2, peli.getPiirtaja()), 2);
     }
 
     @Test
     public void vinoTarkistusToimiiOA4() {
-        peli.getPiirtaja().getDatabase().lisaaListaan(6, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(7, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(5, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(6, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(5, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(5, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "O", "X", 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(6, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(7, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(6, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 2);
         assertEquals(peli.getVoitonTarkistaja().tarkasta(2, peli.getPiirtaja()), 2);
     }
 
     @Test
     public void vinoTarkistusToimiiOA5() {
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(5, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(6, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(7, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(6, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(7, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(5, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(6, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(5, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(5, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "O", "X", 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(6, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(7, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(6, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(7, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(6, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 2);
         assertEquals(peli.getVoitonTarkistaja().tarkasta(2, peli.getPiirtaja()), 2);
     }
 
     @Test
     public void vinoTarkistusToimiiOA6() {
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(5, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(6, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(7, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(5, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(6, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(7, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(6, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(7, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(5, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(6, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(5, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(5, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "O", "X", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "O", "X", 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(6, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(7, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(6, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(7, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(6, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(7, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(6, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 2);
         assertEquals(peli.getVoitonTarkistaja().tarkasta(2, peli.getPiirtaja()), 2);
     }
 
     @Test
     public void tasapelinTunnistusOikein() {
-        peli.getPiirtaja().getDatabase().lisaaListaan(1, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(1, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(1, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(1, "X", "O", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(1, "X", "O", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(1, "X", "O", 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(1, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(1, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(1, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(1, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(1, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(1, 2);
 
-        peli.getPiirtaja().getDatabase().lisaaListaan(2, "X", "O", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(2, "X", "O", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(2, "X", "O", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(2, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(2, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(2, "X", "O", 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(2, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(2, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(2, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(2, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(2, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(2, 1);
 
-        peli.getPiirtaja().getDatabase().lisaaListaan(3, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(3, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(3, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(3, "X", "O", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(3, "X", "O", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(3, "X", "O", 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 2);
 
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "X", "O", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "X", "O", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "X", "O", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(4, "X", "O", 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 1);
 
-        peli.getPiirtaja().getDatabase().lisaaListaan(5, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(5, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(5, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(5, "X", "O", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(5, "X", "O", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(5, "X", "O", 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 2);
 
-        peli.getPiirtaja().getDatabase().lisaaListaan(6, "X", "O", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(6, "X", "O", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(6, "X", "O", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(6, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(6, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(6, "X", "O", 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(6, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(6, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(6, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(6, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(6, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(6, 1);
 
-        peli.getPiirtaja().getDatabase().lisaaListaan(7, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(7, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(7, "X", "O", 1);
-        peli.getPiirtaja().getDatabase().lisaaListaan(7, "X", "O", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(7, "X", "O", 2);
-        peli.getPiirtaja().getDatabase().lisaaListaan(7, "X", "O", 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(7, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(7, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(7, 1);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(7, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(7, 2);
+        peli.getPiirtaja().getTietokanta().lisaaListaan(7, 2);
 
         assertEquals(peli.getVoitonTarkistaja().tarkasta(1, peli.getPiirtaja()), 3);
         assertEquals(peli.getVoitonTarkistaja().tarkasta(2, peli.getPiirtaja()), 3);
