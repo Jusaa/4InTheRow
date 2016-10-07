@@ -8,11 +8,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -64,7 +60,6 @@ public class Piirtaja {
         for (int i = 0; i < 42; i++) {
             alusta.getContentPane().add(new JLabel(kuvantuoja.getImageIcon(0)));
         }
-
         alusta.pack();
         alusta.validate();
         alusta.setVisible(true);
@@ -156,7 +151,6 @@ public class Piirtaja {
             voittajanTeksti = new JButton("Pelaaja 2 voitti, paina tästä jatkaaksesi");
         } else {
             voittajanTeksti = new JButton("Tasapeli, paina tästä jatkaaksesi");
-        }
 
         voittajanTeksti.addMouseListener(new HiirenKuuntelija(20, peli));
         alusta.add(voittajanTeksti, gbc);
@@ -171,6 +165,7 @@ public class Piirtaja {
         alusta.add(new JLabel(" Pelaaja 2: " + peli.getPelaajaKaksi().getVoitot()), gbc);
         alusta.validate();
 
+        }
     }
 
     /**

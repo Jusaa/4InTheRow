@@ -2,6 +2,9 @@ package com.intherow.logiikka;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class HiirenKuuntelija implements MouseListener {
 
@@ -16,9 +19,7 @@ public class HiirenKuuntelija implements MouseListener {
     public HiirenKuuntelija(int pylvas, Peli peli) {
         this.pylvas = pylvas;
         this.peli = peli;
-
     }
-
     @Override
     public void mouseClicked(MouseEvent e) {
         if (pylvas < 8) {

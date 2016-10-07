@@ -3,6 +3,7 @@ package com.intherow.logiikka;
 import com.intherow.ui.Piirtaja;
 import java.io.IOException;
 import java.util.ArrayList;
+import javax.swing.JButton;
 
 public class Peli {
 
@@ -21,7 +22,6 @@ public class Peli {
         piirtaja = new Piirtaja(this);
         voitonTarkistaja = new VoitonTarkistaja();
         pelaajanvuoro = 1;
-
     }
 
     /**
@@ -65,8 +65,7 @@ public class Peli {
         try {
             piirtaja.getTietokanta().uusiLista();
             piirtaja.uusiPeli();
-        } catch (IOException ex) {
-
+        } catch(IOException ex){
         }
     }
 
@@ -153,7 +152,7 @@ public class Peli {
     public int getPelaajanVuoro() {
         return pelaajanvuoro;
     }
-
+    
     /**
      * Kutsuttaessa muuttaa pelissä pelaajan vuoron toiselle.
      */

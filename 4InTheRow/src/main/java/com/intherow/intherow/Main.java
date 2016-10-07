@@ -24,7 +24,5 @@ public class Main {
             }
         }).start();
         peli.aloita();
-        
-        
     }
 }

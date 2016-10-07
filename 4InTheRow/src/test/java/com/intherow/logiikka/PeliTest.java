@@ -343,7 +343,7 @@ public class PeliTest {
         peli.getPiirtaja().getTietokanta().lisaaListaan(7, 2);
         peli.getPiirtaja().getTietokanta().lisaaListaan(7, 2);
         peli.getPiirtaja().getTietokanta().lisaaListaan(7, 2);
-
+        
         assertEquals(peli.getVoitonTarkistaja().tarkasta(1, peli.getPiirtaja()), 3);
         assertEquals(peli.getVoitonTarkistaja().tarkasta(2, peli.getPiirtaja()), 3);
     }

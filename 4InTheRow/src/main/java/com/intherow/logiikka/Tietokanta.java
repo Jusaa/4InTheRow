@@ -28,7 +28,11 @@ public class Tietokanta {
     }
 
     /**
+<<<<<<< HEAD
      * Lisää tietokannan listaan merkin oikeaan paikkaan.
+=======
+     * Lisää tietokannan listaan merkin oikeaan paikkaan
+>>>>>>> refs/remotes/origin/master
      * @param pylvas mihin pylvääseen merkki laitetaan
      * @param id pelaajan oma id arvo
      * @return the boolean
