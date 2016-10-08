@@ -151,7 +151,8 @@ public class Piirtaja {
             voittajanTeksti = new JButton("Pelaaja 2 voitti, paina tästä jatkaaksesi");
         } else {
             voittajanTeksti = new JButton("Tasapeli, paina tästä jatkaaksesi");
-
+        }
+        
         voittajanTeksti.addMouseListener(new HiirenKuuntelija(20, peli));
         alusta.add(voittajanTeksti, gbc);
         gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -164,8 +165,6 @@ public class Piirtaja {
         gbc.insets = new Insets(0, 0, 25, 0);
         alusta.add(new JLabel(" Pelaaja 2: " + peli.getPelaajaKaksi().getVoitot()), gbc);
         alusta.validate();
-
-        }
     }
 
     /**
