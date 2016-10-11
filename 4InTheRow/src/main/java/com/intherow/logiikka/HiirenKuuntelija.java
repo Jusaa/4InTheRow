@@ -13,6 +13,7 @@ public class HiirenKuuntelija implements MouseListener {
 
     /**
      * Konstruktori hiirenkuuntelijalle.
+     *
      * @param pylvas kertoo mihin pylvaaseen tai numeroon kuuntelija liittyy
      * @param peli kertoo pelin tiedot kuuntelijalle
      */
@@ -20,6 +21,7 @@ public class HiirenKuuntelija implements MouseListener {
         this.pylvas = pylvas;
         this.peli = peli;
     }
+
     @Override
     public void mouseClicked(MouseEvent e) {
     }
@@ -27,7 +29,7 @@ public class HiirenKuuntelija implements MouseListener {
     @Override
     public void mousePressed(MouseEvent e) {
         if (pylvas < 8) {
-            peli.vuoro(pylvas);            
+            peli.vuoro(pylvas);
         } else {
             if (pylvas == 11) {
                 peli.aloitaYksinPeli();

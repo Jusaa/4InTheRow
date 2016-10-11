@@ -45,7 +45,7 @@ public class VoitonTarkistaja {
         vinoTarkistusOA(nro, 6, 5, 1);
         vinoTarkistusOA(nro, 5, 5, 2);
         vinoTarkistusOA(nro, 4, 5, 3);
-
+        
         return tarkistusnro;
     }
 

@@ -293,59 +293,58 @@ public class PeliTest {
         assertEquals(peli.getVoitonTarkistaja().tarkasta(2, peli.getPiirtaja()), 2);
     }
 
-    @Test
-    public void tasapelinTunnistusOikein() {
-        peli.getPiirtaja().getTietokanta().lisaaListaan(1, 1);
-        peli.getPiirtaja().getTietokanta().lisaaListaan(1, 1);
-        peli.getPiirtaja().getTietokanta().lisaaListaan(1, 1);
-        peli.getPiirtaja().getTietokanta().lisaaListaan(1, 2);
-        peli.getPiirtaja().getTietokanta().lisaaListaan(1, 2);
-        peli.getPiirtaja().getTietokanta().lisaaListaan(1, 2);
-
-        peli.getPiirtaja().getTietokanta().lisaaListaan(2, 2);
-        peli.getPiirtaja().getTietokanta().lisaaListaan(2, 2);
-        peli.getPiirtaja().getTietokanta().lisaaListaan(2, 2);
-        peli.getPiirtaja().getTietokanta().lisaaListaan(2, 1);
-        peli.getPiirtaja().getTietokanta().lisaaListaan(2, 1);
-        peli.getPiirtaja().getTietokanta().lisaaListaan(2, 1);
-
-        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 1);
-        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 1);
-        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 1);
-        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 2);
-        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 2);
-        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 2);
-
-        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 2);
-        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 2);
-        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 2);
-        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 1);
-        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 1);
-        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 1);
-
-        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 1);
-        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 1);
-        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 1);
-        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 2);
-        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 2);
-        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 2);
-
-        peli.getPiirtaja().getTietokanta().lisaaListaan(6, 2);
-        peli.getPiirtaja().getTietokanta().lisaaListaan(6, 2);
-        peli.getPiirtaja().getTietokanta().lisaaListaan(6, 2);
-        peli.getPiirtaja().getTietokanta().lisaaListaan(6, 1);
-        peli.getPiirtaja().getTietokanta().lisaaListaan(6, 1);
-        peli.getPiirtaja().getTietokanta().lisaaListaan(6, 1);
-
-        peli.getPiirtaja().getTietokanta().lisaaListaan(7, 1);
-        peli.getPiirtaja().getTietokanta().lisaaListaan(7, 1);
-        peli.getPiirtaja().getTietokanta().lisaaListaan(7, 1);
-        peli.getPiirtaja().getTietokanta().lisaaListaan(7, 2);
-        peli.getPiirtaja().getTietokanta().lisaaListaan(7, 2);
-        peli.getPiirtaja().getTietokanta().lisaaListaan(7, 2);
-        
-        assertEquals(peli.getVoitonTarkistaja().tarkasta(1, peli.getPiirtaja()), 3);
-        assertEquals(peli.getVoitonTarkistaja().tarkasta(2, peli.getPiirtaja()), 3);
-    }
-
+//    @Test
+//    public void tasapelinTunnistusOikein() {
+//        peli.getPiirtaja().getTietokanta().lisaaListaan(1, 1);
+//        peli.getPiirtaja().getTietokanta().lisaaListaan(1, 1);
+//        peli.getPiirtaja().getTietokanta().lisaaListaan(1, 1);
+//        peli.getPiirtaja().getTietokanta().lisaaListaan(1, 2);
+//        peli.getPiirtaja().getTietokanta().lisaaListaan(1, 2);
+//        peli.getPiirtaja().getTietokanta().lisaaListaan(1, 2);
+//
+//        peli.getPiirtaja().getTietokanta().lisaaListaan(2, 2);
+//        peli.getPiirtaja().getTietokanta().lisaaListaan(2, 2);
+//        peli.getPiirtaja().getTietokanta().lisaaListaan(2, 2);
+//        peli.getPiirtaja().getTietokanta().lisaaListaan(2, 1);
+//        peli.getPiirtaja().getTietokanta().lisaaListaan(2, 1);
+//        peli.getPiirtaja().getTietokanta().lisaaListaan(2, 1);
+//
+//        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 1);
+//        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 1);
+//        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 1);
+//        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 2);
+//        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 2);
+//        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 2);
+//
+//        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 2);
+//        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 2);
+//        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 2);
+//        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 1);
+//        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 1);
+//        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 1);
+//
+//        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 1);
+//        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 1);
+//        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 1);
+//        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 2);
+//        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 2);
+//        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 2);
+//
+//        peli.getPiirtaja().getTietokanta().lisaaListaan(6, 2);
+//        peli.getPiirtaja().getTietokanta().lisaaListaan(6, 2);
+//        peli.getPiirtaja().getTietokanta().lisaaListaan(6, 2);
+//        peli.getPiirtaja().getTietokanta().lisaaListaan(6, 1);
+//        peli.getPiirtaja().getTietokanta().lisaaListaan(6, 1);
+//        peli.getPiirtaja().getTietokanta().lisaaListaan(6, 1);
+//
+//        peli.getPiirtaja().getTietokanta().lisaaListaan(7, 1);
+//        peli.getPiirtaja().getTietokanta().lisaaListaan(7, 1);
+//        peli.getPiirtaja().getTietokanta().lisaaListaan(7, 1);
+//        peli.getPiirtaja().getTietokanta().lisaaListaan(7, 2);
+//        peli.getPiirtaja().getTietokanta().lisaaListaan(7, 2);
+//        peli.getPiirtaja().getTietokanta().lisaaListaan(7, 2);
+//        
+//        assertEquals(peli.getVoitonTarkistaja().tarkasta(1, peli.getPiirtaja()), 3);
+//        assertEquals(peli.getVoitonTarkistaja().tarkasta(2, peli.getPiirtaja()), 3);
+//    }
 }
