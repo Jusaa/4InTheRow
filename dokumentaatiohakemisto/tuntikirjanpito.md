@@ -24,3 +24,6 @@ Viikko 5||
 04.10.2016 | 3h | Grafiikkaliittymän edistämistä + ongelmia githubin kanssa
 06.10.2016 | 3h | Grafiikan lisäämistä (vihdoinkin iso tyhmä bugi korjattu)
 07.10.2016 | 5h | Kaaviot, muiden muotoseikkojen päivitys, koodin siistimistä ja pientä edistystä
+Viikko 6||
+10.10.2016 | 2h | Demoa ennen pienet graafiset lisäykset
+11.10.2016 | 2h | Git repositorio vihdoinkin kunossa windows anniversary updaten jäliltä 
