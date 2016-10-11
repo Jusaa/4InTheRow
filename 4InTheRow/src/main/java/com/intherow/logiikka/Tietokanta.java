@@ -17,6 +17,7 @@ public class Tietokanta {
      * Alustaa uuden listan uutta peliä varten.
      */
     public void uusiLista() {
+        lista = new ArrayList<>();
         ArrayList<Integer> sisaLista;
         for (int i = 7; i > 0; i--) {
             sisaLista = new ArrayList<>();
@@ -28,11 +29,6 @@ public class Tietokanta {
     }
 
     /**
-<<<<<<< HEAD
-     * Lisää tietokannan listaan merkin oikeaan paikkaan.
-=======
-     * Lisää tietokannan listaan merkin oikeaan paikkaan
->>>>>>> refs/remotes/origin/master
      * @param pylvas mihin pylvääseen merkki laitetaan
      * @param id pelaajan oma id arvo
      * @return the boolean

@@ -2,6 +2,8 @@ package com.intherow.logiikka;
 
 import com.intherow.ui.Piirtaja;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class TietokonePelaaja implements Pelaaja {
 
@@ -12,6 +14,7 @@ public class TietokonePelaaja implements Pelaaja {
 
     /**
      * Metodi lisää pelaajan haluaman merkin peliin.
+     *
      * @param piirtaja hakee alustan mihin laittaa merkin
      * @param id kertoo onko kyseessä pelaaja 1 vai 2
      */
@@ -21,10 +24,10 @@ public class TietokonePelaaja implements Pelaaja {
         voitot = 0;
         random = new Random();
     }
-    
+
     @Override
     public void laitaMerkki(Piirtaja piirtaja, int pylvas) {
-        //Graafiseen liittymään siirtymisen jälkeen tämän parantaminen
+
         while (true) {
             pylvas = random.nextInt(6) + 1;
             if (piirtaja.vuoronPiirto(pylvas, id) == true) {
@@ -32,7 +35,7 @@ public class TietokonePelaaja implements Pelaaja {
             }
         }
     }
-    
+
     @Override
     public void voitti() {
         voitot++;

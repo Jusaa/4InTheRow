@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 
 /**
  * Luokka hoitaa graafisen pelitoteutuksen piirtämisen.
+ *
  * @author Jusaa
  */
 public class Piirtaja {
@@ -26,7 +27,8 @@ public class Piirtaja {
 
     /**
      * Konstruktori piirtajalle.
-     * @param peli 
+     *
+     * @param peli
      */
     public Piirtaja(Peli peli) {
         tietokanta = new Tietokanta();
@@ -36,13 +38,14 @@ public class Piirtaja {
 
         alusta = new JFrame("4InTheRow");
         alusta.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        alusta.setLayout(new GridLayout(7, 7));
+        alusta.setLayout(new GridLayout(2, 1));
         alusta.setPreferredSize(new Dimension(350, 350));
         alusta.setResizable(false);
     }
 
     /**
      * Metodi alustaa uuden pelin.
+     *
      * @throws IOException if MouseListener fails
      */
     public void uusiPeli() throws IOException {
@@ -67,6 +70,7 @@ public class Piirtaja {
 
     /**
      * Metodi lisää pelikentälle uuden merkin.
+     *
      * @param pylvas mihin pylvääseen merkki laitetaan
      * @param id pelaajan oma id arvo
      * @return the boolean
@@ -102,8 +106,12 @@ public class Piirtaja {
     public void aloitusMenunPiirto() {
 
         alusta.getContentPane().removeAll();
-        alusta.getContentPane().add(new JButton("Uusi yksinpeli")).addMouseListener(new HiirenKuuntelija(11, peli));
-        alusta.getContentPane().add(new JButton("Uusi kaksinpeli")).addMouseListener(new HiirenKuuntelija(12, peli));
+        JButton nappi = new JButton(kuvantuoja.getImageIcon(10));
+        nappi.addMouseListener(new HiirenKuuntelija(11, peli));
+        alusta.getContentPane().add(nappi);
+        nappi = new JButton(kuvantuoja.getImageIcon(11));
+        nappi.addMouseListener(new HiirenKuuntelija(12, peli));
+        alusta.getContentPane().add(nappi);
         alusta.pack();
         alusta.setVisible(true);
     }
@@ -112,6 +120,7 @@ public class Piirtaja {
      * Metodi piirtää menun jonka avulla pelaaja päättää miten jatketaan.
      */
     public void valiMenunPiirto() {
+
         alusta.getContentPane().removeAll();
         alusta.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
@@ -134,17 +143,12 @@ public class Piirtaja {
 
     /**
      * Piirtää pelin loputtua tulokset.
+     *
      * @param voittaja kertoo kumpi pelaajista voitti
      */
     public void tuloksenPiirto(int voittaja) {
-        alusta.getContentPane().removeAll();
-        alusta.setLayout(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
+        
         JButton voittajanTeksti;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        gbc.gridy = 0;
-        gbc.weighty = 1;
-
         if (voittaja == 1) {
             voittajanTeksti = new JButton("Pelaaja 1 voitti, paina tästä jatkaaksesi");
         } else if (voittaja == 2) {
@@ -152,7 +156,13 @@ public class Piirtaja {
         } else {
             voittajanTeksti = new JButton("Tasapeli, paina tästä jatkaaksesi");
         }
-        
+        alusta.getContentPane().removeAll();
+        alusta.setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridy = 0;
+        gbc.weighty = 1;
+
         voittajanTeksti.addMouseListener(new HiirenKuuntelija(20, peli));
         alusta.add(voittajanTeksti, gbc);
         gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -165,10 +175,12 @@ public class Piirtaja {
         gbc.insets = new Insets(0, 0, 25, 0);
         alusta.add(new JLabel(" Pelaaja 2: " + peli.getPelaajaKaksi().getVoitot()), gbc);
         alusta.validate();
+
     }
 
     /**
      * Metodi muuttaa graafisessa liittymässä tietyn ruudun.
+     *
      * @param ruutuId ruudun id numero
      * @param id pelaajan id numero
      */
@@ -179,7 +191,6 @@ public class Piirtaja {
         } else if (id == 2) {
             alusta.getContentPane().add(new JLabel(kuvantuoja.getImageIcon(2)), ruutuId);
         }
-
     }
 
     public Tietokanta getTietokanta() {

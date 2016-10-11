@@ -31,6 +31,8 @@ public class Kuvantuoja {
         BufferedImage bufferedNumero5 = null;
         BufferedImage bufferedNumero6 = null;
         BufferedImage bufferedNumero7 = null;
+        BufferedImage bufferedYksinpeli = null;
+        BufferedImage bufferedKaksinpeli = null;
 
         try {
             bufferedTyhjaruutu = ImageIO.read(new File("kuvat/ruudut/tyhjaruutu.png"));
@@ -43,6 +45,9 @@ public class Kuvantuoja {
             bufferedNumero5 = ImageIO.read(new File("kuvat/pylvasnumerot/numero5.png"));
             bufferedNumero6 = ImageIO.read(new File("kuvat/pylvasnumerot/numero6.png"));
             bufferedNumero7 = ImageIO.read(new File("kuvat/pylvasnumerot/numero7.png"));
+            bufferedYksinpeli = ImageIO.read(new File("kuvat/menunapit/yksinpeli.png"));
+            bufferedKaksinpeli = ImageIO.read(new File("kuvat/menunapit/kaksinpeli.png"));
+            
         } catch (IOException ex) {
 
         }
@@ -57,6 +62,8 @@ public class Kuvantuoja {
         kuvat.add(new ImageIcon(bufferedNumero5));
         kuvat.add(new ImageIcon(bufferedNumero6));
         kuvat.add(new ImageIcon(bufferedNumero7));
+        kuvat.add(new ImageIcon(bufferedYksinpeli));
+        kuvat.add(new ImageIcon(bufferedKaksinpeli));
     }
 
     public ImageIcon getImageIcon(int index) {

@@ -22,8 +22,12 @@ public class HiirenKuuntelija implements MouseListener {
     }
     @Override
     public void mouseClicked(MouseEvent e) {
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
         if (pylvas < 8) {
-            peli.vuoro(pylvas);
+            peli.vuoro(pylvas);            
         } else {
             if (pylvas == 11) {
                 peli.aloitaYksinPeli();
@@ -34,13 +38,7 @@ public class HiirenKuuntelija implements MouseListener {
             } else if (pylvas == 20) {
                 peli.aloitaUudestaan();
             }
-
         }
-
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
     }
 
     @Override

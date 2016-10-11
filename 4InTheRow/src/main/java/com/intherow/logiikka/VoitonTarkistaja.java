@@ -11,7 +11,7 @@ public class VoitonTarkistaja {
      * Konstruktori voitontarkastajalle.
      */
     public VoitonTarkistaja() {
-        tarkistusnro = 0;
+        
     }
 
     /**
@@ -23,6 +23,7 @@ public class VoitonTarkistaja {
     public int tarkasta(int nro, Piirtaja piirtaja) {
         String voitto = "";
         this.piirtaja = piirtaja;
+        tarkistusnro = 0;
         //Pystyrivien tarkistus
         pystyTarkistus(nro);
 
@@ -44,19 +45,6 @@ public class VoitonTarkistaja {
         vinoTarkistusOA(nro, 6, 5, 1);
         vinoTarkistusOA(nro, 5, 5, 2);
         vinoTarkistusOA(nro, 4, 5, 3);
-
-        if (tarkistusnro == 0) {
-            int apunumero = 0;
-            for (int i = 0; i < 7; i++) {
-                if (!piirtaja.getTietokanta().getLista().get(i).contains(0)) {
-                    apunumero++;
-                }
-                if (apunumero == 7) {
-                    System.out.println("TASAPELI!");
-                    tarkistusnro = 3;
-                }
-            }
-        }
 
         return tarkistusnro;
     }
