@@ -33,7 +33,7 @@ public class TietokonePelaaja implements Pelaaja {
                 piirtaja.getPeli().getVoitonTarkistaja().resetPylvas();
                 System.out.println(pylvas);
             }
-            if(piirtaja.getTietokanta().getLista().get(pylvas - 1).get(5) != 0){
+            if (piirtaja.getTietokanta().getLista().get(pylvas - 1).get(5) != 0) {
                 pylvas = random.nextInt(6) + 1;
             }
             if (piirtaja.vuoronPiirto(pylvas, id) == true) {

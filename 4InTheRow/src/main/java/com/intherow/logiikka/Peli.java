@@ -73,7 +73,7 @@ public class Peli {
     /**
      * Aloittaa vuoron suorittamisen.
      *
-     * @param pylvas
+     * @param pylvas kertoo mikä pylväs on valittu
      */
     public void vuoro(int pylvas) {
         if (pelaajakaksi.getClass().equals(pelaajayksi.getClass())) {
@@ -90,7 +90,7 @@ public class Peli {
     /**
      * Suorittaa vuoron kaksinpelissä.
      *
-     * @param pylvas
+     * @param pylvas kertoo mikä pylväs on valittu
      */
     public void kaksinPeliVuoro(int pylvas) {
         if (piirtaja.vuoronPiirto(pylvas, getPelaajanVuoro())) {
@@ -107,7 +107,7 @@ public class Peli {
     /**
      * Suorittaa vuoron yksinpelissä.
      *
-     * @param pylvas
+     * @param pylvas kertoo mikä pylväs on valittu
      */
     public void yksinPeliVuoro(int pylvas) {
         if (piirtaja.vuoronPiirto(pylvas, 1)) {

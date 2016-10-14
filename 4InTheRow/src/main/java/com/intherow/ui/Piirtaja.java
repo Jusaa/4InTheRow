@@ -28,7 +28,7 @@ public class Piirtaja {
     /**
      * Konstruktori piirtajalle.
      *
-     * @param peli
+     * @param peli antaa mahdollisuuden hakea pelin tietoja
      */
     public Piirtaja(Peli peli) {
         tietokanta = new Tietokanta();
@@ -52,14 +52,9 @@ public class Piirtaja {
 
         alusta.getContentPane().removeAll();
         alusta.setLayout(new GridLayout(7, 7));
-        alusta.getContentPane().add(new JButton(kuvantuoja.getImageIcon(3))).addMouseListener(new HiirenKuuntelija(1, peli));
-        alusta.getContentPane().add(new JButton(kuvantuoja.getImageIcon(4))).addMouseListener(new HiirenKuuntelija(2, peli));
-        alusta.getContentPane().add(new JButton(kuvantuoja.getImageIcon(5))).addMouseListener(new HiirenKuuntelija(3, peli));
-        alusta.getContentPane().add(new JButton(kuvantuoja.getImageIcon(6))).addMouseListener(new HiirenKuuntelija(4, peli));
-        alusta.getContentPane().add(new JButton(kuvantuoja.getImageIcon(7))).addMouseListener(new HiirenKuuntelija(5, peli));
-        alusta.getContentPane().add(new JButton(kuvantuoja.getImageIcon(8))).addMouseListener(new HiirenKuuntelija(6, peli));
-        alusta.getContentPane().add(new JButton(kuvantuoja.getImageIcon(9))).addMouseListener(new HiirenKuuntelija(7, peli));
-
+        for (int i = 1; i < 8; i++) {
+            alusta.getContentPane().add(new JButton(kuvantuoja.getImageIcon(i + 2))).addMouseListener(new HiirenKuuntelija(i, peli));
+        }
         for (int i = 0; i < 42; i++) {
             alusta.getContentPane().add(new JLabel(kuvantuoja.getImageIcon(0)));
         }
@@ -147,7 +142,7 @@ public class Piirtaja {
      * @param voittaja kertoo kumpi pelaajista voitti
      */
     public void tuloksenPiirto(int voittaja) {
-        
+
         JButton voittajanTeksti;
         if (voittaja == 1) {
             voittajanTeksti = new JButton("Pelaaja 1 voitti, paina tästä jatkaaksesi");
@@ -204,6 +199,4 @@ public class Piirtaja {
     public Peli getPeli() {
         return peli;
     }
-    
-    
 }

@@ -29,6 +29,8 @@ public class Tietokanta {
     }
 
     /**
+     * Lisää listaan tiedon uudesta merkistä.
+     * 
      * @param pylvas mihin pylvääseen merkki laitetaan
      * @param id pelaajan oma id arvo
      * @return the boolean

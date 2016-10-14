@@ -179,6 +179,9 @@ public class VoitonTarkistaja {
         return pylvas;
     }
 
+    /**
+     * Palauttaa pylvään arvoksi -1.
+     */
     public void resetPylvas() {
         pylvas = -1;
     }

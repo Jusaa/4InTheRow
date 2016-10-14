@@ -130,20 +130,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.intherow.logiikka.HiirenKuuntelija.java">com/intherow/logiikka/HiirenKuuntelija.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#com.intherow.logiikka.Peli.java">com/intherow/logiikka/Peli.java</a>
                 </td>
                 <td>
@@ -159,6 +145,20 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#com.intherow.logiikka.Tietokanta.java">com/intherow/logiikka/Tietokanta.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.intherow.intherow.HiirenKuuntelija.java">com/intherow/intherow/HiirenKuuntelija.java</a>
                 </td>
                 <td>
                   0
