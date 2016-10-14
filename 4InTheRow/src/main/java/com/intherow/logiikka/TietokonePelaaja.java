@@ -2,8 +2,6 @@ package com.intherow.logiikka;
 
 import com.intherow.ui.Piirtaja;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class TietokonePelaaja implements Pelaaja {
 
@@ -30,6 +28,14 @@ public class TietokonePelaaja implements Pelaaja {
 
         while (true) {
             pylvas = random.nextInt(6) + 1;
+            if (piirtaja.getPeli().getVoitonTarkistaja().getPylvas() != -1) {
+                pylvas = piirtaja.getPeli().getVoitonTarkistaja().getPylvas();
+                piirtaja.getPeli().getVoitonTarkistaja().resetPylvas();
+                System.out.println(pylvas);
+            }
+            if(piirtaja.getTietokanta().getLista().get(pylvas - 1).get(5) != 0){
+                pylvas = random.nextInt(6) + 1;
+            }
             if (piirtaja.vuoronPiirto(pylvas, id) == true) {
                 break;
             }

@@ -1,5 +1,6 @@
-package com.intherow.logiikka;
+package com.intherow.intherow;
 
+import com.intherow.logiikka.Peli;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;

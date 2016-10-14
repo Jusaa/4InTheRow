@@ -1,7 +1,7 @@
 package com.intherow.ui;
 
 import com.intherow.logiikka.Tietokanta;
-import com.intherow.logiikka.HiirenKuuntelija;
+import com.intherow.intherow.HiirenKuuntelija;
 import com.intherow.logiikka.Peli;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -200,4 +200,10 @@ public class Piirtaja {
     public JFrame getAlusta() {
         return alusta;
     }
+
+    public Peli getPeli() {
+        return peli;
+    }
+    
+    
 }
