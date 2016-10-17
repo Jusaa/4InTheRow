@@ -9,6 +9,7 @@ public class TietokonePelaaja implements Pelaaja {
     private int id;
     private Piirtaja piirtaja;
     private int voitot;
+    private VuoronTarkistaja vuoronTarkistaja;
 
     /**
      * Metodi lisää pelaajan haluaman merkin peliin.
@@ -18,6 +19,7 @@ public class TietokonePelaaja implements Pelaaja {
      */
     public TietokonePelaaja(Piirtaja piirtaja, int id) {
         this.piirtaja = piirtaja;
+        vuoronTarkistaja = new VuoronTarkistaja(piirtaja);
         this.id = id;
         voitot = 0;
         random = new Random();
@@ -25,12 +27,13 @@ public class TietokonePelaaja implements Pelaaja {
 
     @Override
     public void laitaMerkki(Piirtaja piirtaja, int pylvas) {
-
+        vuoronTarkistaja.tarkasta(1);
         while (true) {
             pylvas = random.nextInt(6) + 1;
-            if (piirtaja.getPeli().getVoitonTarkistaja().getPylvas() != -1) {
-                pylvas = piirtaja.getPeli().getVoitonTarkistaja().getPylvas();
-                piirtaja.getPeli().getVoitonTarkistaja().resetPylvas();
+            System.out.println(vuoronTarkistaja.getPylvas());
+            if (vuoronTarkistaja.getPylvas() != -1) {
+                pylvas = vuoronTarkistaja.getPylvas();
+                vuoronTarkistaja.resetArvot();
                 System.out.println(pylvas);
             }
             if (piirtaja.getTietokanta().getLista().get(pylvas - 1).get(5) != 0) {

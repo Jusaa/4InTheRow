@@ -22,7 +22,7 @@ public class Peli {
     public Peli() {
         tarkistusnro = 0;
         piirtaja = new Piirtaja(this);
-        voitonTarkistaja = new VoitonTarkistaja();
+        voitonTarkistaja = new VoitonTarkistaja(piirtaja);
         pelaajanvuoro = 1;
     }
 
@@ -30,7 +30,6 @@ public class Peli {
      * Aloittaa ensimmäisen pelin pelaajan inputin mukaan.
      */
     public void aloita() {
-        voitonTarkistaja = new VoitonTarkistaja();
         piirtaja.aloitusMenunPiirto();
     }
 
@@ -38,7 +37,6 @@ public class Peli {
      * Aloittaa uuden pelin pelaajan inputin mukaan.
      */
     public void aloitaUudestaan() {
-        voitonTarkistaja = new VoitonTarkistaja();
         piirtaja.valiMenunPiirto();
     }
 
@@ -94,7 +92,7 @@ public class Peli {
      */
     public void kaksinPeliVuoro(int pylvas) {
         if (piirtaja.vuoronPiirto(pylvas, getPelaajanVuoro())) {
-            tarkistusnro = voitonTarkistaja.tarkasta(getPelaajanVuoro(), piirtaja);
+            tarkistusnro = voitonTarkistaja.tarkasta(getPelaajanVuoro());
             if (tarkistusnro == 1) {
                 pelaajayksi.voitti();
             } else if (tarkistusnro == 2) {
@@ -111,12 +109,12 @@ public class Peli {
      */
     public void yksinPeliVuoro(int pylvas) {
         if (piirtaja.vuoronPiirto(pylvas, 1)) {
-            tarkistusnro = voitonTarkistaja.tarkasta(1, piirtaja);
+            tarkistusnro = voitonTarkistaja.tarkasta(1);
             if (tarkistusnro == 1) {
                 pelaajayksi.voitti();
             } else {
                 pelaajakaksi.laitaMerkki(piirtaja, 1);
-                tarkistusnro = voitonTarkistaja.tarkasta(2, piirtaja);
+                tarkistusnro = voitonTarkistaja.tarkasta(2);
                 if (tarkistusnro == 2) {
                     pelaajakaksi.voitti();
                 }

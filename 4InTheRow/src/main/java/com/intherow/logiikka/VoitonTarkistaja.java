@@ -6,24 +6,23 @@ public class VoitonTarkistaja {
 
     private int tarkistusnro;
     private Piirtaja piirtaja;
-    private int pylvas;
 
     /**
      * Konstruktori voitontarkastajalle.
+     * 
+     * @param piirtaja piirtaja jossa pelikenttä tallessa
      */
-    public VoitonTarkistaja() {
-        pylvas = -1;
+    public VoitonTarkistaja(Piirtaja piirtaja) {
+        this.piirtaja = piirtaja;
     }
 
     /**
      * Metodi tarkastaa onko pelaaja voittanut.
      *
      * @param nro pelaajan id numero kumpi laittoi viime merkin
-     * @param piirtaja piirtaja jossa pelikenttä tallessa
      * @return tarkistusnumero, joka kertoo tarkastuksen tuloksen
      */
-    public int tarkasta(int nro, Piirtaja piirtaja) {
-        this.piirtaja = piirtaja;
+    public int tarkasta(int nro) {
         String voitto = "";
         tarkistusnro = 0;
         //Pystyrivien tarkistus
@@ -86,7 +85,6 @@ public class VoitonTarkistaja {
                     voitto = "";
                 }
             }
-
             dingDingDing(nro, voitto);
         }
     }
@@ -126,18 +124,7 @@ public class VoitonTarkistaja {
                 if (piirtaja.getTietokanta().getLista().get(ii).get(i) == nro) {
                     voitto = voitto + nro;
                 } else {
-                    if (piirtaja.getTietokanta().getLista().get(ii).get(i) == 2) {
-                        voitto = voitto + 2;
-                    }
-                    if (voitto.equals("112") || voitto.equals("1112") && pylvas == i + 1) {
-                        pylvas = -1;
-                    }
                     voitto = "";
-                }
-                if (voitto.equals("111") && pylvas == -1) {
-                    pylvas = ii + 1;
-                } else if (pylvas == -1 && voitto.equals("11") && pylvas == -1) {
-                    pylvas = ii + 1;
                 }
                 dingDingDing(nro, voitto);
             }
@@ -157,33 +144,10 @@ public class VoitonTarkistaja {
                 if (piirtaja.getTietokanta().getLista().get(i).get(ii) == nro) {
                     voitto = voitto + nro;
                 } else {
-                    if (piirtaja.getTietokanta().getLista().get(i).get(ii) == 2) {
-                        voitto = voitto + 2;
-                    }
-                    if (voitto.equals("112") || voitto.equals("1112") && pylvas == i + 1) {
-                        pylvas = -1;
-                    }
                     voitto = "";
-                }
-                if (voitto.equals("111") && pylvas == -1) {
-                    pylvas = i + 1;
-                } else if (pylvas == -1 && voitto.equals("11") && pylvas == -1) {
-                    pylvas = i + 1;
                 }
                 dingDingDing(nro, voitto);
             }
         }
     }
-
-    public int getPylvas() {
-        return pylvas;
-    }
-
-    /**
-     * Palauttaa pylvään arvoksi -1.
-     */
-    public void resetPylvas() {
-        pylvas = -1;
-    }
-
 }
