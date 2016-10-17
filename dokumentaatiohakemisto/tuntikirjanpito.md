@@ -28,3 +28,5 @@ Viikko 6||
 10.10.2016 | 2h | Demoa ennen pienet graafiset lisäykset
 11.10.2016 | 2h | Git repositorio vihdoinkin kunossa windows anniversary updaten jäliltä 
 14.10.2016 | 3h | Tekoälyn mietintää ja ensivaiheita
+Viikko 7||
+17.10.2016 | 2h | Tekoälyn edistämistä, voitontarkastajan ja vuorontarkastajan erotus
