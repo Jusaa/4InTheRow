@@ -149,23 +149,22 @@ public class VuoronTarkistaja {
                             pylvaat.put(ii + 1, 4);
                         }
                         voitto = "";
-                    } else if (voitto.equals("2112")){
+                    } else if (voitto.equals("2112")) {
                         pylvaat.put(ii + 1, 0);
-                        if(ii != 3){
+                        if (ii != 3) {
                             pylvaat.put(ii - 3, 0);
                         }
                         voitto = "";
-                    } else if(voitto.equals("21112")){
+                    } else if (voitto.equals("21112")) {
                         pylvaat.put(ii + 1, 0);
-                        if(ii != 4){
+                        if (ii != 4) {
                             pylvaat.put(ii - 4, 0);
                         }
                         voitto = "";
-                    }
-                    else if (voitto.equals("20") || voitto.equals("0")) {
+                    } else if (voitto.equals("20") || voitto.equals("0")) {
                         voitto = "";
                     }
-                    
+
                 }
                 if (voitto.equals("2111") || voitto.equals("22111")) {
                     pylvaat.put(ii - 2, 0);

@@ -32,14 +32,18 @@ public class TietokonePelaaja implements Pelaaja {
             int suurinArvo = -1;
             int valittuPylvas = 0;
             System.out.println(vuoronTarkistaja.getPylvaat());
-            for(Integer i : vuoronTarkistaja.getPylvaat().values()){
+            for (Integer i : vuoronTarkistaja.getPylvaat().values()) {
                 pylvas++;
-                if(i > suurinArvo){
+                if (i > suurinArvo) {
                     suurinArvo = i;
                     valittuPylvas = pylvas;
+                } else if (i == suurinArvo) {
+                    if (random.nextBoolean()) {
+                        valittuPylvas = pylvas;
+                    }
                 }
             }
-            if(suurinArvo == 0){
+            if (suurinArvo == 0) {
                 valittuPylvas = random.nextInt(6) + 1;
             }
             if (piirtaja.getTietokanta().getLista().get(valittuPylvas - 1).get(5) != 0) {
@@ -49,7 +53,7 @@ public class TietokonePelaaja implements Pelaaja {
             if (piirtaja.vuoronPiirto(valittuPylvas, id) == true) {
                 break;
             }
-            
+
             vuoronTarkistaja.resetArvot();
         }
     }
