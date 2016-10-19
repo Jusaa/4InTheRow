@@ -29,19 +29,28 @@ public class TietokonePelaaja implements Pelaaja {
     public void laitaMerkki(Piirtaja piirtaja, int pylvas) {
         vuoronTarkistaja.tarkasta(1);
         while (true) {
-            pylvas = random.nextInt(6) + 1;
-            System.out.println(vuoronTarkistaja.getPylvas());
-            if (vuoronTarkistaja.getPylvas() != -1) {
-                pylvas = vuoronTarkistaja.getPylvas();
-                vuoronTarkistaja.resetArvot();
-                System.out.println(pylvas);
+            int suurinArvo = -1;
+            int valittuPylvas = 0;
+            System.out.println(vuoronTarkistaja.getPylvaat());
+            for(Integer i : vuoronTarkistaja.getPylvaat().values()){
+                pylvas++;
+                if(i > suurinArvo){
+                    suurinArvo = i;
+                    valittuPylvas = pylvas;
+                }
             }
-            if (piirtaja.getTietokanta().getLista().get(pylvas - 1).get(5) != 0) {
-                pylvas = random.nextInt(6) + 1;
+            if(suurinArvo == 0){
+                valittuPylvas = random.nextInt(6) + 1;
             }
-            if (piirtaja.vuoronPiirto(pylvas, id) == true) {
+            if (piirtaja.getTietokanta().getLista().get(valittuPylvas - 1).get(5) != 0) {
+                valittuPylvas = random.nextInt(6) + 1;
+            }
+            System.out.println(vuoronTarkistaja.getPylvaat());
+            if (piirtaja.vuoronPiirto(valittuPylvas, id) == true) {
                 break;
             }
+            
+            vuoronTarkistaja.resetArvot();
         }
     }
 

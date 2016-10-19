@@ -6,26 +6,29 @@
 package com.intherow.logiikka;
 
 import com.intherow.ui.Piirtaja;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
  * @author Jusaa
  */
 public class VuoronTarkistaja {
-    
+
     private Piirtaja piirtaja;
-    private int pylvas;
-    private int priority;
-    
+    private Map<Integer, Integer> pylvaat;
+
     /**
      * Konstruktori voitontarkastajalle.
-     * 
+     *
      * @param piirtaja piirtaja jossa pelikenttä tallessa
      */
     public VuoronTarkistaja(Piirtaja piirtaja) {
         this.piirtaja = piirtaja;
-        pylvas = -1;
-        priority = -1;
+        pylvaat = new HashMap<>();
+        for (int i = 1; i < 8; i++) {
+            pylvaat.put(i, 0);
+        }
     }
 
     /**
@@ -35,11 +38,12 @@ public class VuoronTarkistaja {
      */
     public void tarkasta(int nro) {
         String voitto = "";
-        //Pystyrivien tarkistus
-        pystyTarkistus(nro);
 
         //Vaakarivien tarkistus
         vaakaTarkistus(nro);
+
+        //Pystyrivien tarkistus
+        pystyTarkistus(nro);
 
         //Vinorivien tarkistus OIKEALLE YLÖS
 //        vinoTarkistusOY(nro, 4, 2);
@@ -48,7 +52,6 @@ public class VuoronTarkistaja {
 //        vinoTarkistusOY(nro, 6, -1);
 //        vinoTarkistusOY(nro, 5, -2);
 //        vinoTarkistusOY(nro, 4, -3);
-
         //Vinorivien tarkistus OIKEALLE ALAS       
 //        vinoTarkistusOA(nro, 4, 3, 0);
 //        vinoTarkistusOA(nro, 5, 4, 0);
@@ -118,28 +121,68 @@ public class VuoronTarkistaja {
                 if (piirtaja.getTietokanta().getLista().get(ii).get(i) == nro) {
                     voitto = voitto + nro;
                 } else {
-                    if (piirtaja.getTietokanta().getLista().get(ii).get(i) == 2) {
-                        voitto = voitto + 2;
+                    voitto = voitto + piirtaja.getTietokanta().getLista().get(ii).get(i);
+                    if (voitto.equals("1112")) {
+                        pylvaat.put(ii + 1, 0);
+                        pylvaat.put(ii, 0);
+                        if (ii != 3) {
+                            pylvaat.put(ii - 3, 4);
+                        }
+                        voitto = "";
+                    } else if (voitto.equals("112")) {
+                        pylvaat.put(ii + 1, 0);
+                        if (ii != 2) {
+                            pylvaat.put(ii - 2, 2);
+                        }
+                        voitto = "";
+                    } else if (voitto.equals("110")) {
+                        voitto = "";
+                    } else if (voitto.equals("1110")) {
+                        voitto = "";
+                    } else if (voitto.equals("21110") || voitto.equals("221110")) {
+                        if (ii == 6) {
+                            pylvaat.put(ii + 1, 4);
+                        }
+                        voitto = "";
+                    } else if (voitto.equals("2110") || voitto.equals("22110") || voitto.equals("222110")) {
+                        if (ii != 6) {
+                            pylvaat.put(ii + 1, 4);
+                        }
+                        voitto = "";
+                    } else if (voitto.equals("2112")){
+                        pylvaat.put(ii + 1, 0);
+                        if(ii != 3){
+                            pylvaat.put(ii - 3, 0);
+                        }
+                        voitto = "";
+                    } else if(voitto.equals("21112")){
+                        pylvaat.put(ii + 1, 0);
+                        if(ii != 4){
+                            pylvaat.put(ii - 4, 0);
+                        }
+                        voitto = "";
                     }
-                    if (voitto.equals("1112") && priority < 4 || voitto.equals("2111") && priority < 4) {
-                        pylvas = -1;
-                    }else if (voitto.equals("112") && priority < 3 || voitto.equals("211") && priority < 3) {
-                        pylvas = -1;
+                    else if (voitto.equals("20") || voitto.equals("0")) {
+                        voitto = "";
                     }
-                    voitto = "";
+                    
                 }
-                if (voitto.equals("111") && priority < 3) {
-                    if(ii == 6){
-                        pylvas = ii - 2;
-                    }else{
-                        pylvas = ii + 2;
-                    }                    
-                } else if (voitto.equals("11") && priority < 2) {
-                    if(ii == 6){
-                        pylvas = ii - 1;
-                    }else{
-                        pylvas = ii + 2;
-                    }  
+                if (voitto.equals("2111") || voitto.equals("22111")) {
+                    pylvaat.put(ii - 2, 0);
+                } else if (voitto.equals("211") || voitto.equals("2211") || voitto.equals("22211")) {
+                    pylvaat.put(ii - 1, 0);
+                } else if (voitto.equals("111")) {
+                    if (ii == 6) {
+                        pylvaat.put(ii - 2, 4);
+                    } else {
+                        pylvaat.put(ii + 2, 4);
+                    }
+                } else if (voitto.equals("11")) {
+                    if (ii == 6) {
+                        pylvaat.put(ii - 5, 2);
+                    } else {
+                        pylvaat.put(ii + 2, 3);
+                    }
                 }
             }
         }
@@ -161,35 +204,33 @@ public class VuoronTarkistaja {
                     if (piirtaja.getTietokanta().getLista().get(i).get(ii) == 2) {
                         voitto = voitto + 2;
                     }
-                    if (voitto.equals("1112") && pylvas == i + 1 && priority < 4) {
-                        resetArvot();
-                    }else if(voitto.equals("112") && pylvas == i + 1 && priority < 3){
-                        resetArvot();
+                    if (voitto.equals("1112")) {
+                        pylvaat.put(i + 1, 0);
+                    } else if (voitto.equals("112")) {
+                        pylvaat.put(i + 1, 0);
                     }
                     voitto = "";
                 }
                 if (voitto.equals("111")) {
-                    priority = 3;
-                    pylvas = i + 1;
-                } else if (pylvas == -1 && voitto.equals("11") && priority < 3) {
-                    priority = 2;
-                    pylvas = i + 1;
+                    pylvaat.put(i + 1, 5);
+                } else if (voitto.equals("11")) {
+                    pylvaat.put(i + 1, 2);
                 }
             }
         }
     }
 
-    public int getPylvas() {
-        return pylvas;
+    public Map<Integer, Integer> getPylvaat() {
+        return pylvaat;
     }
 
     /**
-     * Palauttaa pylvään arvoksi -1.
+     * Palauttaa pylväiden arvoksi 0.
      */
     public void resetArvot() {
-        pylvas = -1;
-        priority = -1;
+        for (int i = 1; i < 8; i++) {
+            pylvaat.put(i, 0);
+        }
     }
 
 }
-

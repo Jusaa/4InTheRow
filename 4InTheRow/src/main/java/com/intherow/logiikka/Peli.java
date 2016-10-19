@@ -113,7 +113,7 @@ public class Peli {
             if (tarkistusnro == 1) {
                 pelaajayksi.voitti();
             } else {
-                pelaajakaksi.laitaMerkki(piirtaja, 1);
+                pelaajakaksi.laitaMerkki(piirtaja, 0);
                 tarkistusnro = voitonTarkistaja.tarkasta(2);
                 if (tarkistusnro == 2) {
                     pelaajakaksi.voitti();
