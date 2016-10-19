@@ -61,52 +61,55 @@ public class VuoronTarkistaja {
 //        vinoTarkistusOA(nro, 4, 5, 3);
     }
 
-    /**
-     * Metodi tarkastaa vinorivit Oikealta Ylös.
-     *
-     * @param nro pelaajan id numero
-     * @param maara kuinka monta kohtaa vinorivissä
-     * @param getOffset säätää aloituspaikkaa
-     */
-    public void vinoTarkistusOY(int nro, int maara, int getOffset) {
-        String voitto = "";
-        for (int i = 0; i < maara; i++) {
-            if (getOffset < 0) {
-                if (piirtaja.getTietokanta().getLista().get(i - getOffset).get(i) == nro) {
-                    voitto = voitto + nro;
-                } else {
-                    voitto = "";
-                }
-            } else {
-                if (piirtaja.getTietokanta().getLista().get(i).get(i + getOffset) == nro) {
-                    voitto = voitto + nro;
-                } else {
-                    voitto = "";
-                }
-            }
-        }
-    }
-
-    /**
-     * Metodi tarkastaa vinorivit Oikealta Alas.
-     *
-     * @param nro pelaajan id numero
-     * @param maara kuinka monta kohtaa vinorivissä
-     * @param laskeva aloituspaikan määritys
-     * @param nouseva aloituspaikan määritys
-     */
-    public void vinoTarkistusOA(int nro, int maara, int laskeva, int nouseva) {
-        String voitto = "";
-        int ii = laskeva;
-        for (int i = nouseva; i < maara + nouseva; i++) {
-            if (piirtaja.getTietokanta().getLista().get(i).get(ii) == nro) {
-                voitto = voitto + nro;
-            } else {
-                voitto = "";
-            }
-            ii--;
-        }
-    }
+    //VinoTarkistukset liian edistyneitä, että enään kerkeää niitä tekemään, 
+    //Jätetään hautumaan tulevaisuutta varten
+    
+//    /**
+//     * Metodi tarkastaa vinorivit Oikealta Ylös.
+//     *
+//     * @param nro pelaajan id numero
+//     * @param maara kuinka monta kohtaa vinorivissä
+//     * @param getOffset säätää aloituspaikkaa
+//     */
+//    public void vinoTarkistusOY(int nro, int maara, int getOffset) {
+//        String voitto = "";
+//        for (int i = 0; i < maara; i++) {
+//            if (getOffset < 0) {
+//                if (piirtaja.getTietokanta().getLista().get(i - getOffset).get(i) == nro) {
+//                    voitto = voitto + nro;
+//                } else {
+//                    voitto = "";
+//                }
+//            } else {
+//                if (piirtaja.getTietokanta().getLista().get(i).get(i + getOffset) == nro) {
+//                    voitto = voitto + nro;
+//                } else {
+//                    voitto = "";
+//                }
+//            }
+//        }
+//    }
+//
+//    /**
+//     * Metodi tarkastaa vinorivit Oikealta Alas.
+//     *
+//     * @param nro pelaajan id numero
+//     * @param maara kuinka monta kohtaa vinorivissä
+//     * @param laskeva aloituspaikan määritys
+//     * @param nouseva aloituspaikan määritys
+//     */
+//    public void vinoTarkistusOA(int nro, int maara, int laskeva, int nouseva) {
+//        String voitto = "";
+//        int ii = laskeva;
+//        for (int i = nouseva; i < maara + nouseva; i++) {
+//            if (piirtaja.getTietokanta().getLista().get(i).get(ii) == nro) {
+//                voitto = voitto + nro;
+//            } else {
+//                voitto = "";
+//            }
+//            ii--;
+//        }
+//    }
 
     /**
      * Metodi tarkastaa voiton vaakariveiltä.

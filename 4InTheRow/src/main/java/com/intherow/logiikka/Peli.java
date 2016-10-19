@@ -122,10 +122,6 @@ public class Peli {
         }
     }
 
-    public ArrayList<ArrayList<Integer>> getLista() {
-        return piirtaja.getTietokanta().getLista();
-    }
-
     public int getTarkistusnro() {
         return tarkistusnro;
     }

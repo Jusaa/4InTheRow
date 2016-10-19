@@ -5,6 +5,7 @@
  */
 package com.intherow.logiikka;
 
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -292,59 +293,48 @@ public class PeliTest {
         peli.getPiirtaja().getTietokanta().lisaaListaan(4, 2);
         assertEquals(peli.getVoitonTarkistaja().tarkasta(2), 2);
     }
-
-//    @Test
-//    public void tasapelinTunnistusOikein() {
-//        peli.getPiirtaja().getTietokanta().lisaaListaan(1, 1);
-//        peli.getPiirtaja().getTietokanta().lisaaListaan(1, 1);
-//        peli.getPiirtaja().getTietokanta().lisaaListaan(1, 1);
-//        peli.getPiirtaja().getTietokanta().lisaaListaan(1, 2);
-//        peli.getPiirtaja().getTietokanta().lisaaListaan(1, 2);
-//        peli.getPiirtaja().getTietokanta().lisaaListaan(1, 2);
-//
-//        peli.getPiirtaja().getTietokanta().lisaaListaan(2, 2);
-//        peli.getPiirtaja().getTietokanta().lisaaListaan(2, 2);
-//        peli.getPiirtaja().getTietokanta().lisaaListaan(2, 2);
-//        peli.getPiirtaja().getTietokanta().lisaaListaan(2, 1);
-//        peli.getPiirtaja().getTietokanta().lisaaListaan(2, 1);
-//        peli.getPiirtaja().getTietokanta().lisaaListaan(2, 1);
-//
-//        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 1);
-//        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 1);
-//        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 1);
-//        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 2);
-//        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 2);
-//        peli.getPiirtaja().getTietokanta().lisaaListaan(3, 2);
-//
-//        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 2);
-//        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 2);
-//        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 2);
-//        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 1);
-//        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 1);
-//        peli.getPiirtaja().getTietokanta().lisaaListaan(4, 1);
-//
-//        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 1);
-//        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 1);
-//        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 1);
-//        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 2);
-//        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 2);
-//        peli.getPiirtaja().getTietokanta().lisaaListaan(5, 2);
-//
-//        peli.getPiirtaja().getTietokanta().lisaaListaan(6, 2);
-//        peli.getPiirtaja().getTietokanta().lisaaListaan(6, 2);
-//        peli.getPiirtaja().getTietokanta().lisaaListaan(6, 2);
-//        peli.getPiirtaja().getTietokanta().lisaaListaan(6, 1);
-//        peli.getPiirtaja().getTietokanta().lisaaListaan(6, 1);
-//        peli.getPiirtaja().getTietokanta().lisaaListaan(6, 1);
-//
-//        peli.getPiirtaja().getTietokanta().lisaaListaan(7, 1);
-//        peli.getPiirtaja().getTietokanta().lisaaListaan(7, 1);
-//        peli.getPiirtaja().getTietokanta().lisaaListaan(7, 1);
-//        peli.getPiirtaja().getTietokanta().lisaaListaan(7, 2);
-//        peli.getPiirtaja().getTietokanta().lisaaListaan(7, 2);
-//        peli.getPiirtaja().getTietokanta().lisaaListaan(7, 2);
-//        
-//        assertEquals(peli.getVoitonTarkistaja().tarkasta(1), 3);
-//        assertEquals(peli.getVoitonTarkistaja().tarkasta(2), 3);
-//    }
+    
+    @Test
+    public void tarkistusnumeronAsettaminen() {
+        assertEquals(0, peli.getTarkistusnro());
+        peli.setTarkistusnro(2);
+        assertEquals(2, peli.getTarkistusnro());
+        peli.setTarkistusnro(1);
+        assertEquals(1, peli.getTarkistusnro());
+    }
+    
+    @Test
+    public void vuoroTesti() {
+        peli.aloitaKaksinPeli();
+        peli.vuoro(1);
+        peli.vuoro(2);
+        peli.vuoro(1);
+        peli.vuoro(2);
+        peli.vuoro(1);
+        peli.vuoro(2);
+        peli.vuoro(1);
+        assertEquals(peli.getVoitonTarkistaja().tarkasta(1), 1);
+        assertEquals(peli.getPelaajaYksi().getVoitot(), 1);
+    }
+    
+    @Test
+    public void vuoroTesti2() {
+        peli.aloitaKaksinPeli();
+        peli.vuoro(1);
+        peli.vuoro(2);
+        peli.vuoro(1);
+        peli.vuoro(2);
+        peli.vuoro(1);
+        peli.vuoro(2);
+        peli.vuoro(3);
+        peli.vuoro(2);
+        assertEquals(peli.getVoitonTarkistaja().tarkasta(2), 2);
+        assertEquals(peli.getPelaajaKaksi().getVoitot(), 1);
+    }
+    
+    public void vuoroTesti3() {
+        peli.aloitaYksinPeli();
+        peli.vuoro(1);
+        assertEquals(peli.getPiirtaja().getTietokanta().getLista().get(0), 1);
+    }
 }
