@@ -31,7 +31,6 @@ public class TietokonePelaaja implements Pelaaja {
         while (true) {
             int suurinArvo = -1;
             int valittuPylvas = 0;
-            System.out.println(vuoronTarkistaja.getPylvaat());
             for (Integer i : vuoronTarkistaja.getPylvaat().values()) {
                 pylvas++;
                 if (i > suurinArvo) {
@@ -49,7 +48,6 @@ public class TietokonePelaaja implements Pelaaja {
             if (piirtaja.getTietokanta().getLista().get(valittuPylvas - 1).get(5) != 0) {
                 valittuPylvas = random.nextInt(6) + 1;
             }
-            System.out.println(vuoronTarkistaja.getPylvaat());
             if (piirtaja.vuoronPiirto(valittuPylvas, id) == true) {
                 break;
             }

@@ -248,7 +248,7 @@ public class PeliTest {
         peli.getPiirtaja().getTietokanta().lisaaListaan(4, 2);
         peli.getPiirtaja().getTietokanta().lisaaListaan(4, 1);
         peli.getPiirtaja().getTietokanta().lisaaListaan(4, 2);
-        assertEquals(peli.getVoitonTarkistaja().tarkasta(1), 2);
+        assertEquals(peli.getVoitonTarkistaja().tarkasta(2), 2);
     }
 
     @Test
