@@ -30,3 +30,4 @@ Viikko 6||
 14.10.2016 | 3h | Tekoälyn mietintää ja ensivaiheita
 Viikko 7||
 17.10.2016 | 2h | Tekoälyn edistämistä, voitontarkastajan ja vuorontarkastajan erotus
+19.10.2016 | 4h | Jar tiedosto, kuvien paikka/käsittely päivitys, tekoälyn edistystä
