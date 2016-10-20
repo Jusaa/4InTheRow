@@ -10,6 +10,10 @@ Aineopintojen harjoitustyö 1
 
 [Tuntikirjanpito](dokumentaatiohakemisto/tuntikirjanpito.md)
 
+[Rakennekuvaus](dokumentaatiohakemisto/Rakennekuvaus.md)
+
+[Käyttöohje](dokumentaatiohakemisto/Kayttoohje.md)
+
 Parit errorit, get metodien javadocin puuttumisesta
 
 [Checkstyle](https://htmlpreview.github.io/?https://github.com/Jusaa/4InTheRow/blob/master/dokumentaatiohakemisto/Checkstyle/checkstyle.html)
