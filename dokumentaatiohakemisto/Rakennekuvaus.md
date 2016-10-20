@@ -2,7 +2,7 @@
 
 #### [Luokkakaavio](https://github.com/Jusaa/4InTheRow/blob/master/dokumentaatiohakemisto/luokkakaavio.png)
 
-Peli koostuu logiikka, käyttöliittymä ja UI paketeista.
+Peli koostuu logiikka ja UI paketeista. (+ Main/Hiirenkuuntelija)
 
 Logiikassa on Pelaajat(Pelaaja interface, IhmisPelaaja ja TietokonePelaaja), Peli, Tietokanta ja Voiton ja VuoronTarkistajat.          
 UI'ssa on Piirtaja ja Kuvantuoja ja käyttöliittymässä Mainin lisäksi HiirenKuuntelija.
