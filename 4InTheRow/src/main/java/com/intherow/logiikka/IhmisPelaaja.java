@@ -10,6 +10,7 @@ public class IhmisPelaaja implements Pelaaja {
 
     /**
      * Konstruktori ihmispelaajan luomiselle.
+     *
      * @param piirtaja kertoo mihin vuorot piirretään
      * @param id kertoo onko kyseessä pelaaja 1 vai 2
      */
@@ -24,17 +25,17 @@ public class IhmisPelaaja implements Pelaaja {
         piirtaja.vuoronPiirto(pylvas, id);
 
     }
-    
+
     @Override
     public void voitti() {
         voitot++;
     }
-    
+
     @Override
     public int getId() {
         return id;
     }
-    
+
     @Override
     public int getVoitot() {
         return voitot;
@@ -44,7 +45,7 @@ public class IhmisPelaaja implements Pelaaja {
     public Piirtaja getPiirtaja() {
         return piirtaja;
     }
-    
+
     @Override
     public String toString() {
         return id + " " + voitot;

@@ -45,6 +45,7 @@ public class Peli {
      */
     public void aloitaKaksinPeli() {
         setPelaajat(new IhmisPelaaja(piirtaja, 1), new IhmisPelaaja(piirtaja, 2));
+        pelaajanvuoro = 1;
         run();
     }
 

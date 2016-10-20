@@ -63,7 +63,6 @@ public class VuoronTarkistaja {
 
     //VinoTarkistukset liian edistyneitä, että enään kerkeää niitä tekemään, 
     //Jätetään hautumaan tulevaisuutta varten
-    
 //    /**
 //     * Metodi tarkastaa vinorivit Oikealta Ylös.
 //     *
@@ -110,7 +109,6 @@ public class VuoronTarkistaja {
 //            ii--;
 //        }
 //    }
-
     /**
      * Metodi tarkastaa voiton vaakariveiltä.
      *

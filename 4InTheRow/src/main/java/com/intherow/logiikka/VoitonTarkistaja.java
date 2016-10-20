@@ -9,7 +9,7 @@ public class VoitonTarkistaja {
 
     /**
      * Konstruktori voitontarkastajalle.
-     * 
+     *
      * @param piirtaja piirtaja jossa pelikenttä tallessa
      */
     public VoitonTarkistaja(Piirtaja piirtaja) {

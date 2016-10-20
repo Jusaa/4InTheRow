@@ -7,6 +7,7 @@ public interface Pelaaja {
 
     /**
      * Metodi lisää pelaajan haluaman merkin peliin.
+     *
      * @param piirtaja hakee alustan mihin laittaa merkin
      * @param pylvas kertoo mihin pylvaaseen merkki laitetaan
      */
@@ -18,7 +19,7 @@ public interface Pelaaja {
     public void voitti();
 
     public int getVoitot();
-    
+
     public int getId();
 
     public Piirtaja getPiirtaja();

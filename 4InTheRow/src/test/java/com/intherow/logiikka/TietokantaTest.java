@@ -78,13 +78,12 @@ public class TietokantaTest {
 
     @Test
     public void liianPaljonMerkkejaYhteenSarakkeeseen() {
-        tietokanta.lisaaListaan(1, 1);
-        tietokanta.lisaaListaan(1, 1);
-        tietokanta.lisaaListaan(1, 1);
-        tietokanta.lisaaListaan(1, 1);
-        tietokanta.lisaaListaan(1, 1);
-        tietokanta.lisaaListaan(1, 1);
-        tietokanta.lisaaListaan(1, 1);
+        while (true) {
+            if (tietokanta.lisaaListaan(1, 1) == false) {
+                break;
+            }
+        }
+
         assertEquals("[[1, 1, 1, 1, 1, 1], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], "
                 + "[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0]]", tietokanta.getLista().toString());
     }

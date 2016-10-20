@@ -75,10 +75,4 @@ public class PelaajaTest {
         cpuplayer.voitti();
         assertEquals(cpuplayer.getVoitot(), 4);
     }
-
-    @Test
-    public void piirtajanHaku() {
-        assertEquals(playerone.getPiirtaja().getTietokanta().getLista().toString(), "[[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], "
-                + "[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0]]");
-    }
 }
