@@ -8,7 +8,7 @@ tavoite saada 4 merkkiä putkeen tiputtamalla eri sarakkeisiin
 ### Toiminnot:
 ##### Aloitusliittymä:
 - Pelimuodon valinta, PvP vai PvCOM
-- COM pelaajan taitotason valinta (Osoittautuikin paljon haastavammaksi, ei kerennyt)
+- COM pelaajan taitotason valinta
 
 ##### Itse peli:
 - Sarakkeen valitseminen mihin pudottaa merkin
