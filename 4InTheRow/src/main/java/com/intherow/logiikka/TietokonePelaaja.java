@@ -12,9 +12,9 @@ public class TietokonePelaaja implements Pelaaja {
     private VuoronTarkistaja vuoronTarkistaja;
 
     /**
-     * Metodi lisää pelaajan haluaman merkin peliin.
+     * Konstruktori tietokonepelaajan luomiselle.
      *
-     * @param piirtaja hakee alustan mihin laittaa merkin
+     * @param piirtaja kertoo mihin vuorot piirretään
      * @param id kertoo onko kyseessä pelaaja 1 vai 2
      */
     public TietokonePelaaja(Piirtaja piirtaja, int id) {

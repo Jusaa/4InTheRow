@@ -17,7 +17,7 @@ public class Kuvantuoja {
      * Kuvantuojan konstruktori joka hakee kaikki kuvat.
      */
     public Kuvantuoja() {
-//        BufferedImage kuva1 = ImageIO.read(getClass().getResourceAsStream("tyhjaruutu.png"))
+        
         kuvat = new ArrayList<>();
         kuvat.add(new javax.swing.ImageIcon(getClass().getResource("/ruudut/tyhjaruutu.png")));
         kuvat.add(new javax.swing.ImageIcon(getClass().getResource("/ruudut/pelaajan1ruutu.png")));
