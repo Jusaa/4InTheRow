@@ -14,10 +14,9 @@ Aineopintojen harjoitustyö 1
 
 [Käyttöohje](dokumentaatiohakemisto/Kayttoohje.md)
 
-Parit errorit, get metodien javadocin puuttumisesta
-
 [Checkstyle](https://htmlpreview.github.io/?https://github.com/Jusaa/4InTheRow/blob/master/dokumentaatiohakemisto/Checkstyle/checkstyle.html)
-
-Testit kattavat lähes kaikki logiikka-asiat
+- Parit errorit, get metodien javadocin puuttumisesta
 
 [Pit-raportti](https://htmlpreview.github.io/?https://github.com/Jusaa/4InTheRow/blob/master/dokumentaatiohakemisto/Pit-raportti/index.html)
+- Tietokonepelaajan + VuoronTarkistajan testit heikohkoja, random testaus ei luonnistu oikein, ja VuoronTarkistaja on sen yllättävän vaikeuden takia muutenkin "keskeneräinen".
+- Muut osa-alueet on mielestäni suhteellisen hyvin testatut.
