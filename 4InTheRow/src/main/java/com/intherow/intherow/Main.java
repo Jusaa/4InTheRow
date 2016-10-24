@@ -21,7 +21,6 @@ public class Main {
             public void run() {
                 peli.aloita();
                 while (true) {
-                    System.out.println(peli.getTarkistusnro());
                     if(peli.getTarkistusnro() != 0){
                         peli.getPiirtaja().tuloksenPiirto(peli.getTarkistusnro());
                         peli.setTarkistusnro(0);
