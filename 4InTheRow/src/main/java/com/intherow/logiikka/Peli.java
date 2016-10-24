@@ -2,10 +2,6 @@ package com.intherow.logiikka;
 
 import com.intherow.ui.Piirtaja;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JButton;
 
 public class Peli {
 
@@ -81,9 +77,6 @@ public class Peli {
             yksinPeliVuoro(pylvas);
         }
         piirtaja.getAlusta().validate();
-        if (tarkistusnro != 0) {
-            piirtaja.tuloksenPiirto(tarkistusnro);
-        }
     }
 
     /**
