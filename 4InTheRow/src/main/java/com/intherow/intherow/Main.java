@@ -23,12 +23,12 @@ public class Main {
             public void run() {
                 peli.aloita();
                 while (true) {
+                    //Ilman Thread.sleep(Tarpeeksi pitkä aika) voitontarkistus ei toimi?
+                    //Voisi korvata myös Sout("Jotain"); ja toimii silloin?
                     try {
-                        //Jos otan tämän Sout kutsun pois, tarkistus ei toimi?
                         Thread.sleep(1000);
                     } catch (InterruptedException ex) {
                     }
-                    //System.out.println(peli.getTarkistusnro());
                     if(peli.getTarkistusnro() != 0){
                         peli.getPiirtaja().tuloksenPiirto(peli.getTarkistusnro());
                         peli.setTarkistusnro(0);
