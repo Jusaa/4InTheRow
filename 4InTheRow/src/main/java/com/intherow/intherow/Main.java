@@ -21,6 +21,8 @@ public class Main {
             public void run() {
                 peli.aloita();
                 while (true) {
+                    //Jos otan tämän Sout kutsun pois, tarkistus ei toimi?
+                    System.out.print(peli.getTarkistusnro());
                     if(peli.getTarkistusnro() != 0){
                         peli.getPiirtaja().tuloksenPiirto(peli.getTarkistusnro());
                         peli.setTarkistusnro(0);
