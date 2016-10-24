@@ -6,6 +6,8 @@
 package com.intherow.intherow;
 
 import com.intherow.logiikka.Peli;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Main {
 
@@ -21,8 +23,12 @@ public class Main {
             public void run() {
                 peli.aloita();
                 while (true) {
-                    //Jos otan tämän Sout kutsun pois, tarkistus ei toimi?
-                    System.out.print(peli.getTarkistusnro());
+                    try {
+                        //Jos otan tämän Sout kutsun pois, tarkistus ei toimi?
+                        Thread.sleep(1000);
+                    } catch (InterruptedException ex) {
+                    }
+                    //System.out.println(peli.getTarkistusnro());
                     if(peli.getTarkistusnro() != 0){
                         peli.getPiirtaja().tuloksenPiirto(peli.getTarkistusnro());
                         peli.setTarkistusnro(0);
